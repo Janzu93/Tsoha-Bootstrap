@@ -21,7 +21,7 @@ echo "Valmis!"
 echo "Siirretään tiedostot users-palvelimelle..."
 
 # Siirretään tiedostot palvelimelle
-scp -r app config lib vendor sql assets index.php composer.json $USERNAME@users2017.cs.helsinki.fi:htdocs/$PROJECT_FOLDER
+scp -r app config lib sql assets index.php composer.json $USERNAME@users2017.cs.helsinki.fi:htdocs/$PROJECT_FOLDER
 
 echo "Valmis!"
 
