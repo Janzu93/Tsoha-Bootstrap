@@ -29,7 +29,8 @@ echo "Asetetaan käyttöoikeudet ja asennetaan Composer..."
 
 # Asetetaan oikeudet ja asennetaan Composer
 ssh $USERNAME@users2017.cs.helsinki.fi "
-chmod -R a+rX htdocs
+chmod a+x htdocs/$PROJECT_FOLDER
+chmod a+r htdocs/$PROJECT_FOLDER/.htaccess
 cd htdocs/$PROJECT_FOLDER
 wget https://getcomposer.org/download/1.2.4/composer.phar
 php composer.phar install
