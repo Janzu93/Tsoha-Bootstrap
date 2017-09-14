@@ -34,6 +34,7 @@ class AuctionatorController extends BaseController
         View::make('register.html');
     }
 
+    // todo Poista lopuksi
     public static function sandbox()
     {
         // Testaa koodiasi täällä

@@ -12,7 +12,7 @@ $routes->get('/ilmoitus', function () {
     AuctionatorController::ilmoitus();
 });
 
-//Tää lähtee pois kunhan kaikki toimii
+// todo Poista lopuksi
 $routes->get('/hiekkalaatikko', function () {
     AuctionatorController::sandbox();
 });
