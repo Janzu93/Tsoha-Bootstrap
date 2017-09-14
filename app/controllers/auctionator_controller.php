@@ -40,5 +40,10 @@ class AuctionatorController extends BaseController
         View::make('helloworld.html');
     }
 
+    public static function adminListaus()
+    {
+        View::make('ilmoitus_list_admin.html');
+    }
+
 
 }

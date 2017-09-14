@@ -28,3 +28,7 @@ $routes->get('/login', function () {
 $routes->get('/register', function () {
     AuctionatorController::register();
 });
+
+$routes->get('/admin/listaus', function () {
+    AuctionatorController::adminListaus();
+});
