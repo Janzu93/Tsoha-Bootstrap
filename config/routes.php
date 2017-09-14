@@ -1,9 +1,13 @@
 <?php
 
-  $routes->get('/', function() {
+$routes->get('/', function () {
     HelloWorldController::index();
-  });
+});
 
-  $routes->get('/hiekkalaatikko', function() {
+$routes->get('/listaus', function () {
+    HelloWorldController::listaus();
+});
+
+$routes->get('/hiekkalaatikko', function () {
     HelloWorldController::sandbox();
-  });
+});
