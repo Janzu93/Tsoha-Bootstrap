@@ -1,10 +1,8 @@
-# Tietokantasovelluksen esittelysivu
+# Tietokantasovellus harjoitustyö
 
-Yleisiä linkkejä:
+Harjoitustyö Helsingin yliopiston Tietokantasovelluskurssia varten.
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+Toteutetaan yksinkertainen verkkohuutokauppa jossa kirjautunut käyttäjä voi asettaa tuotteita kaupattavaksi tai huutaa tuotetta. Huudettavaksi asetettu tuote myydään asetetun aikaraamin sisällä korkeimman tarjouksen antaneelle
 
-## Työn aihe
-
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
+Sovellus: http://lofhjann.users.cs.helsinki.fi/tsoha/ <br/>
+Dokumentaatio: https://github.com/Janzu93/tsoha/blob/master/doc/dokumentaatio.pdf
