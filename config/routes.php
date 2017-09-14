@@ -24,3 +24,7 @@ $routes->get('/muokkaa', function () {
 $routes->get('/login', function () {
     AuctionatorController::login();
 });
+
+$routes->get('/register', function () {
+    AuctionatorController::register();
+});
