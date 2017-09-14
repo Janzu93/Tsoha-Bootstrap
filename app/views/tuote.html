@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>The Elder Scrolls V: Skyrim</h1>
+<!-- Painikkeet tähän -->
+<p>
+    <button class="btn btn-danger">Poista</button>
+    <a href="#" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Nimi: </strong>Ladidas Kenkä (pariton)</li>
+    <li><strong>Myyjä: </strong>Peikko Petterinen</li>
+    <li><strong>Kaupan alkamispäivä: </strong>09.09.2017</li>
+    <li><strong>Kaupan päättymisaika: </strong>20.09.2017</li>
+    <li><strong>Tila: </strong><label class="label label-success">Huudettavissa</label></li>
+    <li><strong>Hinta nyt: </strong>50€</li>
+    <li><strong>Huutojen määrä: </strong>1</li>
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+    Myydään tarpeettomana Ladidaksen pariton kenkä. Vain tosissaan huutavia kiitos!
+</p>
+<h2>Huudot: </h2>
+<table class="table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Nimi</th>
+        <th>Huutopäivä</th>
+        <th>Hinta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Matti Maksaja</td>
+        <td>14.09.2017</td>
+        <td>50€</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}

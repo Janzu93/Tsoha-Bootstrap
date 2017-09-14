@@ -14,6 +14,11 @@ class HelloWorldController extends BaseController
         View::make('auction_list.html');
     }
 
+    public static function tuoteSivu()
+    {
+        View::make('tuote.html');
+    }
+
     public static function sandbox()
     {
         // Testaa koodiasi täällä
