@@ -20,3 +20,7 @@ $routes->get('/hiekkalaatikko', function () {
 $routes->get('/muokkaa', function () {
     AuctionatorController::muokkaus();
 });
+
+$routes->get('/login', function () {
+    AuctionatorController::login();
+});
