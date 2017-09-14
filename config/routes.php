@@ -1,17 +1,22 @@
 <?php
 
 $routes->get('/', function () {
-    HelloWorldController::index();
+    AuctionatorController::index();
 });
 
 $routes->get('/listaus', function () {
-    HelloWorldController::listaus();
+    AuctionatorController::listaus();
 });
 
-$routes->get('/tuote', function () {
-    HelloWorldController::tuoteSivu();
+$routes->get('/ilmoitus', function () {
+    AuctionatorController::ilmoitus();
 });
 
+//Tää lähtee pois kunhan kaikki toimii
 $routes->get('/hiekkalaatikko', function () {
-    HelloWorldController::sandbox();
+    AuctionatorController::sandbox();
+});
+
+$routes->get('/muokkaa', function () {
+    AuctionatorController::muokkaus();
 });

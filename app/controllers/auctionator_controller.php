@@ -1,6 +1,6 @@
 <?php
 
-class HelloWorldController extends BaseController
+class AuctionatorController extends BaseController
 {
 
     public static function index()
@@ -11,12 +11,17 @@ class HelloWorldController extends BaseController
 
     public static function listaus()
     {
-        View::make('auction_list.html');
+        View::make('ilmoitus_list.html');
     }
 
-    public static function tuoteSivu()
+    public static function ilmoitus()
     {
-        View::make('tuote.html');
+        View::make('ilmoitus.html');
+    }
+
+    public static function muokkaus()
+    {
+        View::make('ilmoitus_edit.html');
     }
 
     public static function sandbox()
