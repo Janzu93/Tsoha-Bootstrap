@@ -34,6 +34,11 @@ class AuctionatorController extends BaseController
         View::make('register.html');
     }
 
+    public static function kayttaja()
+    {
+        View::make('kayttaja.html');
+    }
+
     // todo Poista lopuksi
     public static function sandbox()
     {

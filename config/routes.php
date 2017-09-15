@@ -29,6 +29,10 @@ $routes->get('/register', function () {
     AuctionatorController::register();
 });
 
+$routes->get('/kayttaja', function () {
+    AuctionatorController::kayttaja();
+});
+
 $routes->get('/admin/listaus', function () {
     AuctionatorController::adminListaus();
 });

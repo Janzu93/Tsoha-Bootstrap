@@ -1,3 +1,52 @@
-<!-- todo-implement Tee tämä tiedosto loppuun (käyttäjän tietosivu-->
+{% extends "base.html" %}
+{% block content %}
+
+
 <!-- todo Tietokannasta listaus, käyttäjän huudot-->
 <!-- todo Tietokannasta listaus, käyttäjän myymät tuotteet-->
+<h1>Matti Maksaja</h1>
+<p>
+    <!-- todo Painikkeiden toiminnallisuus-->
+    <a href="#" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- todo Tiedot tietokannasta-->
+<ul>
+    <li><strong>Etunimi: </strong>Matti</li>
+    <li><strong>Sukunimi: </strong>Maksaja</li>
+    <li><strong>Syntymäpäivä: </strong>10.10.1998</li>
+</ul>
+<h2>Huudot: </h2>
+<table class="table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Tuote</th>
+        <th>Huutopäivä</th>
+        <th>Hinta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Saapas</td>
+        <td>11.11.2016</td>
+        <td>2€</td>
+    </tr>
+    </tbody>
+</table>
+<h2>Myynnit: </h2>
+<table class="table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Tuote</th>
+        <th>Asetettu myyntiin</th>
+        <th>Hinta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a href="#">Ladidas kenkä (pariton)</a></td>
+        <td>09.09.2017</td>
+        <td>2€</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
