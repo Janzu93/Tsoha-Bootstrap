@@ -1,1 +1,3 @@
--- Lisää DROP TABLE lauseet tähän tiedostoon
+DROP TABLE IF EXISTS Kayttaja CASCADE;
+DROP TABLE IF EXISTS Huuto CASCADE;
+DROP TABLE IF EXISTS Ilmoitus CASCADE;
