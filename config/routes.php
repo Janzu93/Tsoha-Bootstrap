@@ -4,6 +4,10 @@ $routes->get('/', function () {
     AuctionatorController::index();
 });
 
+$routes->get('/admin', function () {
+    AuctionatorController::admin();
+});
+
 $routes->get('/listaus', function () {
     AuctionatorController::listaus();
 });
