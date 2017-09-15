@@ -1,31 +1,28 @@
--- Lisää CREATE TABLE lauseet tähän tiedostoon
-CREATE TABLE Kayttaja (
-	id serial PRIMARY KEY,
-	etunimi VARCHAR(20) NOT NULL,
-	sukunimi VARCHAR(20) NOT NULL,
-	syntymapaiva TIMESTAMP NOT NULL,
-	osoite VARCHAR(100) NOT NULL,
-	oikeudet NUMERIC(1,0) DEFAULT '0' NOT NULL
+CREATE TABLE Kayttaja(
+ id serial primary key,
+ etunimi VARCHAR(20) not null,
+ sukunimi VARCHAR(20) not null,
+ kayttajatunnus VARCHAR not null,
+ syntymapaiva DATE not null,
+ osoite VARCHAR(100) not null,
+ oikeudet NUMERIC(1,0) DEFAULT 0 not null
 );
 
-
-
-CREATE TABLE Huuto (
-  id SERIAL PRIMARY KEY,
-  ilmoitus_id INT REFERENCES Ilmoitus(id),
-  kayttaja_id INT REFERENCES Kayttaja(id),
-  hinta NUMERIC(8,2) NOT NULL,
-  aika TIMESTAMP NOT NULL
+CREATE TABLE Ilmoitus(
+ id serial primary key,
+ nimi VARCHAR(200) not null,
+ alkamispaiva DATE DEFAULT current_date,
+ paattymispaiva DATE not null,
+ lahtohinta NUMERIC(8,2) not null,
+ hintaNyt NUMERIC(8,2) not null,
+ kuvaus VARCHAR(1000) not null,
+ kayttaja_id INT REFERENCES Kayttaja(id)
 );
 
-
-
-CREATE TABLE Ilmoitus (
-	id serial PRIMARY KEY,
-	nimi VARCHAR(200) NOT NULL,
-	paattymispaiva TIMESTAMP NOT NULL,
-	lahtohinta NUMERIC(8,2) NOT NULL,
-	hintaNyt NUMERIC(8,2) NOT NULL,
-	kuvaus VARCHAR(1000) NOT NULL,
-	kayttaja_id INT REFERENCES Kayttaja(id)
+CREATE TABLE Huuto(
+ id SERIAL primary key,
+ ilmoitus_id INT REFERENCES Ilmoitus(id),
+ kayttaja_id INT REFERENCES Kayttaja(id),
+ hinta NUMERIC(8,2) not null,
+ paiva DATE not null
 );
