@@ -19,9 +19,14 @@ class AuctionatorController extends BaseController
         View::make('ilmoitus.html');
     }
 
-    public static function muokkaus()
+    public static function tuoteMuokkaus()
     {
         View::make('ilmoitus_edit.html');
+    }
+
+    public static function kayttajaMuokkaus()
+    {
+        View::make('kayttaja_edit.html');
     }
 
     public static function login()
@@ -38,6 +43,7 @@ class AuctionatorController extends BaseController
     {
         View::make('kayttaja.html');
     }
+
 
     // todo Poista lopuksi
     public static function sandbox()

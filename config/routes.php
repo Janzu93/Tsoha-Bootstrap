@@ -17,8 +17,12 @@ $routes->get('/hiekkalaatikko', function () {
     AuctionatorController::sandbox();
 });
 
-$routes->get('/muokkaa', function () {
-    AuctionatorController::muokkaus();
+$routes->get('/muokkaa/ilmoitus', function () {
+    AuctionatorController::tuoteMuokkaus();
+});
+
+$routes->get('/muokkaa/kayttaja', function () {
+    AuctionatorController::kayttajaMuokkaus();
 });
 
 $routes->get('/login', function () {

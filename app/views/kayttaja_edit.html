@@ -1,1 +1,36 @@
-<!-- todo-implement Tee tämä tiedosto loppuun (Käyttäjän tietojenmuokkaus)-->
+{% extends "base.html" %}
+{% block content %}
+<!-- todo Tiedot tietokannasta-->
+<h1>Muokkaa käyttäjän: Matti Maksaja tietoja</h1>
+
+<form>
+    <div class="form-group">
+        <label>Käyttäjänimi: Matti Maksaja</label>
+    </div>
+    <div class="form-group">
+        <label>Etunimi: Matti</label>
+    </div>
+    <div class="form-group">
+        <label>Sukunimi: Maksaja</label>
+    </div>
+    <div class="form-group">
+        <label>Syntymäaika: 10.10.1998</label>
+    </div>
+    <div class="form-group">
+        <label>Vaihda salasana: </label>
+        <input type="password" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Salasana uudestaan: </label>
+        <input type="password" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Osoite: </label>
+        <input type="text" value="Testitie 7A" class="form-control">
+    </div>
+    <div class="form-group">
+        <!-- todo Submit napille-->
+        <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+</form>
+{% endblock %}
