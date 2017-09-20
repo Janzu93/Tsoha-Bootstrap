@@ -22,7 +22,7 @@ Käyttäjämuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/kayttaja
 Tuotetiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/ilmoitus <br/>
 Käyttäjätiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/kayttaja
 
-#Muut sivut
+##Muut sivut
 Login sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/login <br/>
 Register sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/register <br/>
 Admin etusivu: http://lofhjann.users.cs.helsinki.fi/tsoha/admin
