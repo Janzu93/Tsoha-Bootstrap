@@ -9,7 +9,7 @@ $routes->get('/admin', function () {
 });
 
 $routes->get('/listaus', function () {
-    AuctionatorController::listaus();
+    IlmoitusController::index();
 });
 
 $routes->get('/ilmoitus', function () {

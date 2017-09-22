@@ -1,7 +1,4 @@
 <?php
-require 'app/models/Huuto.php';
-require 'app/models/Ilmoitus.php';
-require 'app/models/Kayttaja.php';
 
 class AuctionatorController extends BaseController
 {
