@@ -11,7 +11,7 @@ class AuctionatorController extends BaseController
 
     public static function listaus()
     {
-        View::make('ilmoitus_list.html');
+        View::make('list.html');
     }
 
     public static function ilmoitus()

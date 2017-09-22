@@ -13,6 +13,6 @@ class IlmoitusController extends BaseController
     {
         $ilmoitukset = Ilmoitus::all();
 
-        View::make('ilmoitus_list.html', array('ilmoitukset' => $ilmoitukset));
+        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset));
     }
 }
