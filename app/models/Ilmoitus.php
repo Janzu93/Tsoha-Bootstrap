@@ -8,7 +8,7 @@
 
 class Ilmoitus extends BaseModel
 {
-    public $id, $nimi, $alkamispaiva, $paattymispaiva, $lahtohinta, $hintanyt, $kuvaus, $kayttaja_id;
+    public $id, $nimi, $alkamispaiva, $paattymispaiva, $lahtohinta, $hintanyt, $kuvaus, $kayttaja_id, $kayttajatunnus;
 
     public function __construct($attributes)
     {
@@ -17,7 +17,7 @@ class Ilmoitus extends BaseModel
 
     public static function all()
     {
-        $query = DB::connection()->prepare('SELECT * FROM Ilmoitus');
+        $query = DB::connection()->prepare('SELECT * FROM Ilmoitus LEFT JOIN Kayttaja ON (Kayttaja.id = Ilmoitus.kayttaja_id) ');
         $query->execute();
 
         $rows = $query->fetchAll();
@@ -32,7 +32,8 @@ class Ilmoitus extends BaseModel
                 'lahtohinta' => $row['lahtohinta'],
                 'hintanyt' => $row['hintanyt'],
                 'kuvaus' => $row['kuvaus'],
-                'kayttaja_id' => $row['kayttaja_id']
+                'kayttaja_id' => $row['kayttaja_id'],
+                'kayttajatunnus' => $row['kayttajatunnus']
             ));
         }
         return $ilmoitukset;

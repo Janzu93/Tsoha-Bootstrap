@@ -35,6 +35,25 @@ class Huuto extends BaseModel
         return $huudot;
     }
 
+    public static function allHuuto()
+    {
+        $query = DB::connection()->prepare('SELECT * FROM Huuto INNER JOIN Ilmoitus ON (Huuto.ilmoitus_id = Ilmoitus.id)');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $huudot = array();
+
+        foreach ($rows as $row) {
+            $huudot[] = new Huuto(array(
+                'id' => $row['id'],
+                'ilmoitus_id' => $row['ilmoitus_id'],
+                'kayttaja_id' => $row['kayttaja_id'],
+                'hinta' => $row['hinta'],
+                'paiva' => $row['paiva']
+            ));
+        }
+        return $huudot;
+    }
+
     public static function find($id)
     {
         $query = DB::connection()->prepare('SELECT * FROM Huuto WHERE id = :id LIMIT 1');

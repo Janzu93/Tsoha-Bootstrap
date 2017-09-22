@@ -24,7 +24,7 @@
     {% for ilmoitus in ilmoitukset %}
     <tr>
         <td><a href="{{base_path}}/ilmoitus/{{ilmoitus.id}}">{{ilmoitus.nimi}}</a></td>
-        <td>{{ilmoitus.kayttaja_id}}</td>
+        <td>{{ilmoitus.kayttajatunnus}}</td>
         <td>{{ilmoitus.alkamispaiva}}</td>
         <td>{{ilmoitus.paattymispaiva}}</td>
         <td><label class="label label-success">W.I.P</label></td>
