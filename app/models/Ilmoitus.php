@@ -10,7 +10,7 @@ class Ilmoitus extends BaseModel
 {
     public $id, $nimi, $alkamispaiva, $paattymispaiva, $lahtohinta, $hintanyt, $kuvaus, $kayttaja_id;
 
-    public function __construct($attributes = null)
+    public function __construct($attributes)
     {
         parent::__construct($attributes);
     }

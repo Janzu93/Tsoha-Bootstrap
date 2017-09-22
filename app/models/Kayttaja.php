@@ -10,7 +10,7 @@ class Kayttaja extends BaseModel
 {
     public $id, $etunimi, $sukunimi, $kayttajatunnus, $syntymapaiva, $osoite, $oikeudet;
 
-    public function __construct($attributes = null)
+    public function __construct($attributes)
     {
         parent::__construct($attributes);
     }
@@ -44,7 +44,7 @@ class Kayttaja extends BaseModel
         $row = $query->fetch();
 
         if ($row) {
-            $Kayttaja = new Kayttaja(array(
+            $kayttaja = new Kayttaja(array(
                 'id' => $row['id'],
                 'etunimi' => $row['etunimi'],
                 'sukunimi' => $row['sukunimi'],
@@ -54,7 +54,7 @@ class Kayttaja extends BaseModel
                 'oikeudet' => $row['oikeudet']
             ));
         }
-        return $Kayttaja;
+        return $kayttaja;
     }
 
     public function save()
@@ -64,13 +64,12 @@ class Kayttaja extends BaseModel
 VALUES (:etunimi, :sukunimi, :kayttajatunnus, :syntymapaiva, :osoite, :oikeudet) RETURNING id');
 
         $query->execute(array(
-            'nimi' => $this->nimi,
-            'alkamispaiva' => $this->alkamispaiva,
-            'paattymispaiva' => $this->paattymispaiva,
-            'lahtohinta' => $this->lahtohinta,
-            'hintanyt' => $this->hintanyt,
-            'kuvaus' => $this->kuvaus,
-            'kayttaja_id' => $this->kayttaja_id));
+            'etunimi' => $this->etunimi,
+            'sukunimi' => $this->sukunimi,
+            'kayttajatunnus' => $this->kayttajatunnus,
+            'syntymapaiva' => $this->syntymapaiva,
+            'osoite' => $this->osoite,
+            'oikeudet' => $this->oikeudet));
 
         $row = $query->fetch();
         $this->id = $row['id'];
