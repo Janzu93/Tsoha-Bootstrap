@@ -21,15 +21,17 @@
 
     <!-- todo Listaus tietokannasta-->
     <tbody>
+    {% for ilmoitus in ilmoitukset %}
     <tr>
-        <td><a href="ilmoitus">Ladidas Kenkä (pariton)</a></td>
-        <td>Peikko Petterinen</td>
-        <td>09.09.2017</td>
-        <td>20.09.2017</td>
-        <td><label class="label label-success">Huudettavissa</label></td>
-        <td>50€</td>
-        <td>1</td>
+        <td><a href="{{base_path}}/ilmoitus/{{ilmoitus.id}}">{{ilmoitus.nimi}}</a></td>
+        <td>{{ilmoitus.kayttaja_id}}</td>
+        <td>{{ilmoitus.alkamispaiva}}</td>
+        <td>{{ilmoitus.paattymispaiva}}</td>
+        <td><label class="label label-success">W.I.P</label></td>
+        <td>{{ilmoitus.hintanyt}}</td>
+        <td>W.I.P</td>
     </tr>
+    {% endfor %}
     </tbody>
 </table>
 {% endblock %}
