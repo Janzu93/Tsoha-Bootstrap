@@ -1,4 +1,7 @@
 <?php
+require 'app/models/Huuto.php';
+require 'app/models/Ilmoitus.php';
+require 'app/models/Kayttaja.php';
 
 class AuctionatorController extends BaseController
 {
@@ -53,7 +56,19 @@ class AuctionatorController extends BaseController
     public static function sandbox()
     {
         // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        $kayttaja = Kayttaja::find(1);
+        $kayttajat = Kayttaja::all();
+        $ilmoitus = Ilmoitus::find(1);
+        $ilmoitukset = Ilmoitus::all();
+        $huuto = Huuto::find(1);
+        $huudot = Huuto::all();
+
+        Kint::dump($kayttaja);
+        Kint::dump($kayttajat);
+        Kint::dump($ilmoitus);
+        Kint::dump($ilmoitukset);
+        Kint::dump($huuto);
+        Kint::dump($huudot);
     }
 
     public static function adminListaus()
