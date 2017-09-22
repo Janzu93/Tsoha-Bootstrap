@@ -9,11 +9,6 @@ class AuctionatorController extends BaseController
         View::make('home.html');
     }
 
-    public static function listaus()
-    {
-        View::make('list.html');
-    }
-
     public static function ilmoitus()
     {
         View::make('ilmoitus.html');
@@ -21,7 +16,7 @@ class AuctionatorController extends BaseController
 
     public static function tuoteMuokkaus()
     {
-        View::make('ilmoitus_edit.html');
+        View::make('edit.html');
     }
 
     public static function kayttajaMuokkaus()
@@ -59,6 +54,8 @@ class AuctionatorController extends BaseController
         $ilmoitukset = Ilmoitus::all();
         $huuto = Huuto::find(1);
         $huudot = Huuto::all();
+        $id = 1;
+        $testHuudot = Huuto::findWithKayttajaId($id);
 
         Kint::dump($kayttaja);
         Kint::dump($kayttajat);
@@ -66,16 +63,12 @@ class AuctionatorController extends BaseController
         Kint::dump($ilmoitukset);
         Kint::dump($huuto);
         Kint::dump($huudot);
+        Kint::dump($testHuudot);
     }
 
     public static function adminListaus()
     {
-        View::make('ilmoitus_list_admin.html');
-    }
-
-    public static function adminKayttajat()
-    {
-        View::make('list.html');
+        View::make('ilmoitus_list.html');
     }
 
 }

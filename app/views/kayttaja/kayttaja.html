@@ -4,16 +4,15 @@
 
 <!-- todo Tietokannasta listaus, käyttäjän huudot-->
 <!-- todo Tietokannasta listaus, käyttäjän myymät tuotteet-->
-<h1>Matti Maksaja</h1>
+
 <p>
-    <a href="/tsoha/muokkaa/kayttaja" class="btn btn-default">Muokkaa</a>
+    <a href="{{base_path}}/kayttaja/{{kayttaja.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
 </p>
-<!-- todo Tiedot tietokannasta-->
 <ul>
-    <li><strong>Etunimi: </strong>Matti</li>
-    <li><strong>Sukunimi: </strong>Maksaja</li>
-    <li><strong>Syntymäpäivä: </strong>10.10.1998</li>
-    <li><strong>Osoite: </strong>Testitie 7A</li>
+    <li><strong>Etunimi: </strong>{{kayttaja.etunimi}}</li>
+    <li><strong>Sukunimi: </strong>{{kayttaja.sukunimi}}</li>
+    <li><strong>Syntymäpäivä: </strong>{{kayttaja.syntymapaiva}}</li>
+    <li><strong>Osoite: </strong>{{kayttaja.osoite}}</li>
 </ul>
 <h2>Myynnit: </h2>
 <table class="table-striped table-bordered">
@@ -43,9 +42,9 @@
     </thead>
     <tbody>
     <tr>
-        <td><a href="/tsoha/ilmoitus">Ladidas kenkä (pariton)</a></td>
-        <td>09.09.2017</td>
-        <td>50€</td>
+        <td><a href="{{base_path}}/ilmoitus/{{ilmoitus.id}}">{{huuto.ilmoitus}}</a></td>
+        <td>{{huuto.paiva}}</td>
+        <td>{{huuto.hinta}}</td>
     </tr>
     </tbody>
 </table>

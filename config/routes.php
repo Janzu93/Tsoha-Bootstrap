@@ -4,6 +4,10 @@ $routes->get('/', function () {
     AuctionatorController::index();
 });
 
+$routes->get('/kayttaja/:id', function ($id) {
+    KayttajaController::page($id);
+});
+
 $routes->get('/admin', function () {
     AuctionatorController::admin();
 });
@@ -21,12 +25,12 @@ $routes->get('/hiekkalaatikko', function () {
     AuctionatorController::sandbox();
 });
 
-$routes->get('/muokkaa/ilmoitus', function () {
-    AuctionatorController::tuoteMuokkaus();
-});
-
 $routes->get('/muokkaa/kayttaja', function () {
     AuctionatorController::kayttajaMuokkaus();
+});
+
+$routes->get('/ilmoitus/muokkaa/:id', function ($id) {
+    IlmoitusController::edit($id);
 });
 
 $routes->get('/login', function () {
@@ -37,14 +41,18 @@ $routes->get('/register', function () {
     AuctionatorController::register();
 });
 
-$routes->get('/kayttaja', function () {
-    AuctionatorController::kayttaja();
-});
-
 $routes->get('/admin/listaus', function () {
-    AuctionatorController::adminListaus();
+    adminController::ilmoitusList();
 });
 
 $routes->get('/admin/kayttajat', function () {
     KayttajaController::index();
+});
+
+$routes->post('/ilmoitus/uusi', function () {
+    IlmoitusController::store();
+});
+
+$routes->post('/ilmoitus/muokkaa/:id', function ($id) {
+    IlmoitusController::update($id);
 });

@@ -77,5 +77,18 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
 
         $row = $query->fetch();
         $this->id = $row['id'];
+
+    }
+
+    public function update($id)
+    {
+        $query = DB::connection()->prepare('UPDATE Ilmoitus SET nimi = :nimi,
+         kuvaus = :kuvaus WHERE id = :id');
+
+        $query->execute(array(
+            'id' => $id,
+            'nimi' => $this->nimi,
+            'kuvaus' => $this->kuvaus));
+
     }
 }

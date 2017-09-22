@@ -8,7 +8,7 @@
 
 class Huuto extends BaseModel
 {
-    public $id, $ilmoitus_id, $kayttaja_id, $hinta, $paiva;
+    public $id, $ilmoitus_id, $kayttaja_id, $hinta, $paiva, $ilmoitus;
 
     public function __construct($attributes)
     {
@@ -35,10 +35,11 @@ class Huuto extends BaseModel
         return $huudot;
     }
 
-    public static function allHuuto()
+    public static function findWithKayttajaId($id)
     {
-        $query = DB::connection()->prepare('SELECT * FROM Huuto INNER JOIN Ilmoitus ON (Huuto.ilmoitus_id = Ilmoitus.id)');
-        $query->execute();
+        $query = DB::connection()->prepare('SELECT * FROM Huuto LEFT JOIN Ilmoitus ON (Huuto.ilmoitus_id = Ilmoitus.id) WHERE Huuto.kayttaja_id = :id');
+        $query->execute(array($id));
+
         $rows = $query->fetchAll();
         $huudot = array();
 
@@ -48,10 +49,12 @@ class Huuto extends BaseModel
                 'ilmoitus_id' => $row['ilmoitus_id'],
                 'kayttaja_id' => $row['kayttaja_id'],
                 'hinta' => $row['hinta'],
-                'paiva' => $row['paiva']
+                'paiva' => $row['paiva'],
+                'ilmoitus' => $row['nimi']
             ));
         }
         return $huudot;
+
     }
 
     public static function find($id)

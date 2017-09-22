@@ -14,4 +14,12 @@ class KayttajaController extends BaseController
 
         View::make('kayttaja/list.html', array('kayttajat' => $kayttajat));
     }
+
+    public static function page($id)
+    {
+        $kayttaja = Kayttaja::find($id);
+        $kayttajanHuudot = Huuto::findWithKayttajaId($id);
+
+        View::make('kayttaja/kayttaja.html', array('kayttaja' => $kayttaja), array('kayttajanHuudot' => $kayttajanHuudot));
+    }
 }
