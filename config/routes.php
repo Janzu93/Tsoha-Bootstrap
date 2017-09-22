@@ -46,5 +46,5 @@ $routes->get('/admin/listaus', function () {
 });
 
 $routes->get('/admin/kayttajat', function () {
-    AuctionatorController::adminKayttajat();
+    KayttajaController::index();
 });

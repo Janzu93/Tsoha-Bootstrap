@@ -75,7 +75,7 @@ class AuctionatorController extends BaseController
 
     public static function adminKayttajat()
     {
-        View::make('kayttaja_list_admin.html');
+        View::make('list.html');
     }
 
 }

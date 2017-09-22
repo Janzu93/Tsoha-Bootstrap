@@ -8,7 +8,7 @@
 
 class Kayttaja extends BaseModel
 {
-    public $id, $etunimi, $sukunimi, $kayttajatunnus, $syntymapaiva, $osoite, $oikeudet;
+    public $id, $etunimi, $sukunimi, $kayttajatunnus, $salasana, $syntymapaiva, $osoite, $oikeudet;
 
     public function __construct($attributes)
     {
@@ -29,6 +29,7 @@ class Kayttaja extends BaseModel
                 'etunimi' => $row['etunimi'],
                 'sukunimi' => $row['sukunimi'],
                 'kayttajatunnus' => $row['kayttajatunnus'],
+                'salasana' => $row['salasana'],
                 'syntymapaiva' => $row['syntymapaiva'],
                 'osoite' => $row['osoite'],
                 'oikeudet' => $row['oikeudet']
@@ -49,6 +50,7 @@ class Kayttaja extends BaseModel
                 'etunimi' => $row['etunimi'],
                 'sukunimi' => $row['sukunimi'],
                 'kayttajatunnus' => $row['kayttajatunnus'],
+                'salasana' => $row['salasana'],
                 'syntymapaiva' => $row['syntymapaiva'],
                 'osoite' => $row['osoite'],
                 'oikeudet' => $row['oikeudet']
@@ -60,13 +62,14 @@ class Kayttaja extends BaseModel
     public function save()
     {
         $query = DB::connection()->prepare(
-            'INSERT INTO Kayttaja (etunimi, sukunimi, kayttajatunnus, syntymapaiva, osoite, oikeudet) 
-VALUES (:etunimi, :sukunimi, :kayttajatunnus, :syntymapaiva, :osoite, :oikeudet) RETURNING id');
+            'INSERT INTO Kayttaja (etunimi, sukunimi, kayttajatunnus, salasana, syntymapaiva, osoite, oikeudet) 
+VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite, :oikeudet) RETURNING id');
 
         $query->execute(array(
             'etunimi' => $this->etunimi,
             'sukunimi' => $this->sukunimi,
             'kayttajatunnus' => $this->kayttajatunnus,
+            'salasana' => $this->salasana,
             'syntymapaiva' => $this->syntymapaiva,
             'osoite' => $this->osoite,
             'oikeudet' => $this->oikeudet));

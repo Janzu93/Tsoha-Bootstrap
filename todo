@@ -1,1 +1,14 @@
-todo-implement Tietokanta yhteys
+todo Kayttajan luonti
+todo Ilmoituksen luonti
+todo Huudon luonti
+
+todo Parempi tunnistautuminen (ei passua db:hen!)
+
+todo Kayttajan muokkaus
+todo Ilmoituksen muokkaus
+
+todo Huudon muokkaus/poisto (admin)
+
+todo Huudon tiedot DBstä
+todo Huutojen listaus sivulla
+todo Kayttajan tiedot DBstä

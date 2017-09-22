@@ -3,6 +3,7 @@ CREATE TABLE Kayttaja(
  etunimi VARCHAR(20) not null,
  sukunimi VARCHAR(20) not null,
  kayttajatunnus VARCHAR not null,
+ salasana VARCHAR(32) not null,
  syntymapaiva DATE not null,
  osoite VARCHAR(100) not null,
  oikeudet NUMERIC(1,0) DEFAULT 0 not null
