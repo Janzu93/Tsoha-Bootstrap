@@ -1,5 +1,4 @@
 todo Kayttajan luonti
-todo Ilmoituksen luonti (testaa)
 todo Huudon luonti
 
 todo Parempi tunnistautuminen (ei passua db:hen!)
@@ -9,9 +8,10 @@ todo Kayttajan muokkaus
 todo Huudon muokkaus/poisto (admin)
 
 todo Huudon luontisivu
-todo Ilmoituksen luontisivu
 
 todo Huudon tiedot DBstä
 todo Huutojen listaus tuotesivulla
 
 todo Huutojen listaus profiilissa (miksei tää toimi?!)
+
+todo Ilmoituksen luonti oikea userId

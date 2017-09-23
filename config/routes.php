@@ -49,10 +49,18 @@ $routes->get('/admin/kayttajat', function () {
     KayttajaController::index();
 });
 
+$routes->get('/ilmoitus/new', function () {
+    IlmoitusController::create();
+});
+
 $routes->post('/ilmoitus/uusi', function () {
     IlmoitusController::store();
 });
 
 $routes->post('/ilmoitus/muokkaa/:id', function ($id) {
     IlmoitusController::update($id);
+});
+
+$routes->post('/ilmoitus/new', function () {
+    IlmoitusController::store();
 });

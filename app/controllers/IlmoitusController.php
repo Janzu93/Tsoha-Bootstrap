@@ -23,23 +23,28 @@ class IlmoitusController extends BaseController
         View::make('ilmoitus/edit.html', array('ilmoitus' => $ilmoitus));
     }
 
+    public static function create()
+    {
+        View::make('ilmoitus/new.html');
+    }
+
     public static function store()
     {
         $params = $_POST;
 
         $ilmoitus = new Ilmoitus(array(
             'nimi' => $params['nimi'],
-            'alkamispaiva' => $params['alkamispaiva'],
+            'alkamispaiva' => date('Y-m-d'),
             'paattymispaiva' => $params['paattymispaiva'],
             'lahtohinta' => $params['lahtohinta'],
-            'hintanyt' => $params['hintanyt'],
+            'hintanyt' => $params['lahtohinta'],
             'kuvaus' => $params['kuvaus'],
-            'kayttaja_id' => $params['kayttaja_id']
+            'kayttaja_id' => 1
         ));
 
         $ilmoitus->save();
 
-        Redirect::to('/listaus' . $ilmoitus->id, array('message' => 'Tuote asetettu myytäväksi!'));
+        Redirect::to('/listaus/' . $ilmoitus->id, array('message' => 'Tuote asetettu myytäväksi!'));
     }
 
     public static function update($id)

@@ -17,7 +17,7 @@ class Ilmoitus extends BaseModel
 
     public static function all()
     {
-        $query = DB::connection()->prepare('SELECT * FROM Ilmoitus LEFT JOIN Kayttaja ON (Kayttaja.id = Ilmoitus.kayttaja_id) ');
+        $query = DB::connection()->prepare('SELECT Ilmoitus.*, Kayttaja.kayttajatunnus FROM Ilmoitus LEFT JOIN Kayttaja ON (Kayttaja.id = Ilmoitus.kayttaja_id) ');
         $query->execute();
 
         $rows = $query->fetchAll();
