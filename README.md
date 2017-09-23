@@ -16,7 +16,7 @@ Kayttajalistaus (adminille): http://lofhjann.users.cs.helsinki.fi/tsoha/admin/ka
 ## Muokkaussivut
 
 Tuotemuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/ilmoitus/1 <br/>
-Käyttäjämuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/kayttaja
+Käyttäjämuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/kayttaja/1
 
 ## Luontisivut
 
