@@ -16,6 +16,13 @@ class IlmoitusController extends BaseController
         View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset));
     }
 
+    public static function ilmoitus($id)
+    {
+        $ilmoitus = Ilmoitus::find($id);
+
+        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus));
+    }
+
     public static function edit($id)
     {
         $ilmoitus = Ilmoitus::find($id);

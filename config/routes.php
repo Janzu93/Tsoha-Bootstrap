@@ -16,8 +16,8 @@ $routes->get('/listaus', function () {
     IlmoitusController::index();
 });
 
-$routes->get('/ilmoitus', function () {
-    AuctionatorController::ilmoitus();
+$routes->get('/ilmoitus/:id', function ($id) {
+    IlmoitusController::ilmoitus($id);
 });
 
 // todo Poista lopuksi

@@ -41,7 +41,9 @@ class Ilmoitus extends BaseModel
 
     public static function find($id)
     {
-        $query = DB::connection()->prepare('SELECT * FROM Ilmoitus WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT Ilmoitus.*, Kayttaja.kayttajatunnus FROM Ilmoitus 
+LEFT JOIN Kayttaja ON (Ilmoitus.kayttaja_id = Kayttaja.id) WHERE ilmoitus.id = :id LIMIT 1');
+
         $query->execute(array('id' => $id));
         $row = $query->fetch();
 
@@ -54,7 +56,8 @@ class Ilmoitus extends BaseModel
                 'lahtohinta' => $row['lahtohinta'],
                 'hintanyt' => $row['hintanyt'],
                 'kuvaus' => $row['kuvaus'],
-                'kayttaja_id' => $row['kayttaja_id']
+                'kayttaja_id' => $row['kayttaja_id'],
+                'kayttajatunnus' => $row['kayttajatunnus']
             ));
         }
         return $ilmoitus;

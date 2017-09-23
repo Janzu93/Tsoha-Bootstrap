@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ilmoitus.nimi}}</h1>
+<p>
+    <!-- todo 'Poista' painike-->
+    <button class="btn btn-danger">Poista</button>
+    <a href="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- todo huutojen määrä ja kaupan tila -->
+<ul>
+    <li><strong>Myyjä: </strong>{{ilmoitus.kayttajatunnus}}</li>
+    <li><strong>Kaupan alkamispäivä: </strong>{{ilmoitus.alkamispaiva}}</li>
+    <li><strong>Kaupan päättymisaika: </strong>{{ilmoitus.paattamispaiva}}</li>
+    <li><strong>Tila: </strong><label class="label label-success">W.I.P</label></li>
+    <li><strong>Hinta nyt: </strong>{{ilmoitus.hintanyt}}</li>
+    <li><strong>Huutojen määrä: </strong>W.I.P</li>
+</ul>
+<p>
+    {{ilmoitus.kuvaus}}
+</p>
+
+<!-- todo Huudot tietokannasta -->
+<h2>Huudot: </h2>
+<table class="table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Nimi</th>
+        <th>Huutopäivä</th>
+        <th>Hinta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Matti Maksaja</td>
+        <td>14.09.2017</td>
+        <td>50€</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
