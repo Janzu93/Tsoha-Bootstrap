@@ -7,22 +7,22 @@ Toteutetaan yksinkertainen verkkohuutokauppa jossa kirjautunut käyttäjä voi a
 Sovellus: http://lofhjann.users.cs.helsinki.fi/tsoha/ <br/>
 Dokumentaatio: https://github.com/Janzu93/tsoha-bootstrap/blob/master/doc/dokumentaatio.pdf
 
-##Listaussivut
+## Listaussivut
 
 Ilmoituslistaus: http://lofhjann.users.cs.helsinki.fi/tsoha/listaus <br/>
 Ilmoituslistaus (adminille): http://lofhjann.users.cs.helsinki.fi/tsoha/admin/listaus <br/>
 Kayttajalistaus (adminille): http://lofhjann.users.cs.helsinki.fi/tsoha/admin/kayttajat <br/>
 
-##Muokkaussivut
+## Muokkaussivut
 
 Tuotemuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/ilmoitus/1 <br/>
 Käyttäjämuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/kayttaja
 
-##Esittelysivut
+## Esittelysivut
 Tuotetiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/ilmoitus/1 <br/>
 Käyttäjätiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/kayttaja/1
 
-##Muut sivut
+## Muut sivut
 Login sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/login <br/>
-Register sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/register <br/>
+Register sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/new/kayttaja <br/>
 Admin etusivu: http://lofhjann.users.cs.helsinki.fi/tsoha/admin
