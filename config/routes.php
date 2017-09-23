@@ -37,8 +37,8 @@ $routes->get('/login', function () {
     AuctionatorController::login();
 });
 
-$routes->get('/register', function () {
-    AuctionatorController::register();
+$routes->get('/kayttaja/new', function () {
+    KayttajaController::create();
 });
 
 $routes->get('/admin/listaus', function () {
@@ -49,11 +49,15 @@ $routes->get('/admin/kayttajat', function () {
     KayttajaController::index();
 });
 
-$routes->get('/ilmoitus/new', function () {
+$routes->get('/new/ilmoitus/', function () {
     IlmoitusController::create();
 });
 
-$routes->post('/ilmoitus/uusi', function () {
+$routes->get('/new/kayttaja/', function () {
+    KayttajaController::create();
+});
+
+$routes->post('/new/ilmoitus/', function () {
     IlmoitusController::store();
 });
 
@@ -61,6 +65,10 @@ $routes->post('/ilmoitus/muokkaa/:id', function ($id) {
     IlmoitusController::update($id);
 });
 
-$routes->post('/ilmoitus/new', function () {
+$routes->post('/new/ilmoitus/', function () {
     IlmoitusController::store();
+});
+
+$routes->post('/new/kayttaja/', function () {
+    KayttajaController::store();
 });

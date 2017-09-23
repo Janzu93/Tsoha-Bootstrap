@@ -44,7 +44,7 @@ class IlmoitusController extends BaseController
 
         $ilmoitus->save();
 
-        Redirect::to('/listaus/' . $ilmoitus->id, array('message' => 'Tuote asetettu myytäväksi!'));
+        Redirect::to('/listaus', array('message' => 'Tuote asetettu myytäväksi!'));
     }
 
     public static function update($id)

@@ -2,42 +2,46 @@
 {% block content %}
 <h1>Rekisteröidy</h1>
 
+
+<div class="alert alert-danger">
+    {{message}}
+</div>
+
 <!-- todo Rekisteröinti toiminnallisuus -->
-<form>
-    <!-- Tekstikenttä käyttäjätunnukselle -->
+<form method="post" action="{{base_path}}/new/kayttaja">
+
     <div class="form-group">
         <label>Käyttäjätunnus</label>
-        <input type="text" class="form-control">
+        <input type="text" name="kayttajatunnus" class="form-control">
     </div>
 
-    <!-- Salasanakenttä salasanalle -->
     <div class="form-group">
         <label>Salasana</label>
-        <input type="password" class="form-control">
+        <input type="password" name="salasana" class="form-control">
     </div>
 
     <div class="form-group">
         <label>Etunimi</label>
-        <input type="text" class="form-control">
+        <input type="text" name="etunimi" class="form-control">
     </div>
 
     <div class="form-group">
         <label>Sukunimi</label>
-        <input type="text" class="form-control">
+        <input type="text" name="sukunimi" class="form-control">
     </div>
 
     <div class="form-group">
-        <label>Syntymäaika</label>
-        <input type="date" class="form-control">
+        <label>Syntymäpäivä</label>
+        <input type="date" name="syntymapaiva" class="form-control">
     </div>
 
     <div class="form-group">
         <label>Osoite</label>
-        <input type="text" class="form-control">
+        <input type="text" name="osoite" class="form-control">
     </div>
 
     <div class="form-group">
-        <input type="checkbox">
+        <input type="checkbox" name="checkbox">
         <label>Hyväksyn tietojeni tallennuksen tietokantaan</label>
     </div>
 

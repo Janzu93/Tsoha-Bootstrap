@@ -22,4 +22,33 @@ class KayttajaController extends BaseController
 
         View::make('kayttaja/kayttaja.html', array('kayttaja' => $kayttaja), array('kayttajanHuudot' => $kayttajanHuudot));
     }
+
+    public static function create()
+    {
+        View::make('kayttaja/new.html');
+    }
+
+    public static function store()
+    {
+        $params = $_POST;
+        try {
+            $kayttaja = new Kayttaja(array(
+                'etunimi' => $params['etunimi'],
+                'sukunimi' => $params['sukunimi'],
+                'kayttajatunnus' => $params['kayttajatunnus'],
+                'salasana' => $params['salasana'],
+                'syntymapaiva' => $params['syntymapaiva'],
+                'osoite' => $params['osoite'],
+                'oikeudet' => 0,
+                'checkbox' => $params['checkbox']
+            ));
+            if ($params['checkbox']) {
+                $kayttaja->save();
+
+                Redirect::to('/', array('message' => 'Käyttäjä rekisteröity'));
+            }
+        } catch (ErrorException $e) {
+            Redirect::to('/new/kayttaja', array('message' => 'Sinun pitää sallia tietojen tallentaminen'));
+        }
+    }
 }

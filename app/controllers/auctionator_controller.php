@@ -29,10 +29,6 @@ class AuctionatorController extends BaseController
         View::make('login.html');
     }
 
-    public static function register()
-    {
-        View::make('register.html');
-    }
 
     public static function kayttaja()
     {
