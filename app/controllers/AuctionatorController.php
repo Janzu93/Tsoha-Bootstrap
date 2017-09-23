@@ -5,36 +5,19 @@ class AuctionatorController extends BaseController
 
     public static function index()
     {
-        // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
         View::make('home.html');
     }
 
-    public static function ilmoitus()
-    {
-        View::make('ilmoitus.html');
-    }
-
-    public static function tuoteMuokkaus()
-    {
-        View::make('edit.html');
-    }
 
     public static function kayttajaMuokkaus()
     {
-        View::make('kayttaja_edit.html');
+        View::make('edit.html');
     }
 
     public static function login()
     {
         View::make('login.html');
     }
-
-
-    public static function kayttaja()
-    {
-        View::make('kayttaja.html');
-    }
-
     public static function admin()
     {
         View::make('admin.html');
@@ -60,11 +43,6 @@ class AuctionatorController extends BaseController
         Kint::dump($huuto);
         Kint::dump($huudot);
         Kint::dump($testHuudot);
-    }
-
-    public static function adminListaus()
-    {
-        View::make('ilmoitus_list.html');
     }
 
 }

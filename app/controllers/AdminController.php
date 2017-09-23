@@ -6,7 +6,7 @@
  * Time: 1:37
  */
 
-class adminController extends BaseController
+class AdminController extends BaseController
 {
     public static function ilmoitusList()
     {

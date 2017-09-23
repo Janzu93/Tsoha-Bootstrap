@@ -51,4 +51,25 @@ class KayttajaController extends BaseController
             Redirect::to('/new/kayttaja', array('message' => 'Sinun pitää sallia tietojen tallentaminen'));
         }
     }
+
+    public static function edit($id)
+    {
+        $kayttaja = Kayttaja::find($id);
+
+        View::make('/kayttaja/edit.html', array('kayttaja' => $kayttaja));
+    }
+
+    public static function update($id)
+    {
+        $params = $_POST;
+
+        $kayttaja = new Kayttaja(array(
+            'salasana' => $params['salasana'],
+            'osoite' => $params['osoite']));
+
+        $kayttaja->update($id);
+
+        Redirect::to('/kayttaja/' . $id, array('message' => 'Käyttäjätiedot päivitetty!'));
+
+    }
 }

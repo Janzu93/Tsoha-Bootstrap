@@ -77,4 +77,16 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+
+    public function update($id)
+    {
+        $query = DB::connection()->prepare('UPDATE Kayttaja SET salasana = :salasana,
+         osoite = :osoite WHERE id = :id');
+
+        $query->execute(array(
+            'id' => $id,
+            'salasana' => $this->salasana,
+            'osoite' => $this->osoite));
+
+    }
 }

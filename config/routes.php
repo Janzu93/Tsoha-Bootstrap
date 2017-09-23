@@ -42,7 +42,7 @@ $routes->get('/kayttaja/new', function () {
 });
 
 $routes->get('/admin/listaus', function () {
-    adminController::ilmoitusList();
+    AdminController::ilmoitusList();
 });
 
 $routes->get('/admin/kayttajat', function () {
@@ -55,6 +55,10 @@ $routes->get('/new/ilmoitus/', function () {
 
 $routes->get('/new/kayttaja/', function () {
     KayttajaController::create();
+});
+
+$routes->get('/kayttaja/muokkaa/:id', function ($id) {
+    KayttajaController::edit($id);
 });
 
 $routes->post('/new/ilmoitus/', function () {
@@ -71,4 +75,8 @@ $routes->post('/new/ilmoitus/', function () {
 
 $routes->post('/new/kayttaja/', function () {
     KayttajaController::store();
+});
+
+$routes->post('/kayttaja/muokkaa/:id', function ($id) {
+    KayttajaController::update($id);
 });
