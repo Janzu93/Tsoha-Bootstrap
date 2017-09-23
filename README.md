@@ -18,11 +18,14 @@ Kayttajalistaus (adminille): http://lofhjann.users.cs.helsinki.fi/tsoha/admin/ka
 Tuotemuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/ilmoitus/1 <br/>
 Käyttäjämuokkaus: http://lofhjann.users.cs.helsinki.fi/tsoha/muokkaa/kayttaja
 
+## Luontisivut
+
+Ilmoituksen luonti: http://lofhjann.users.cs.helsinki.fi/tsoha/new/ilmoitus <br />
+Kayttajan luonti: http://lofhjann.users.cs.helsinki.fi/tsoha/new/kayttaja
 ## Esittelysivut
 Tuotetiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/ilmoitus/1 <br/>
 Käyttäjätiedot: http://lofhjann.users.cs.helsinki.fi/tsoha/kayttaja/1
 
 ## Muut sivut
 Login sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/login <br/>
-Register sivu: http://lofhjann.users.cs.helsinki.fi/tsoha/new/kayttaja <br/>
 Admin etusivu: http://lofhjann.users.cs.helsinki.fi/tsoha/admin
