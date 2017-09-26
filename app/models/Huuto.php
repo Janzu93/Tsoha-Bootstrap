@@ -75,6 +75,28 @@ class Huuto extends BaseModel
         return $huuto;
     }
 
+    public static function findWithIlmoitusId($ilmoitusId)
+    {
+        $query = DB::connection()->prepare('SELECT Huuto.*, Kayttaja.kayttajatunnus FROM Huuto LEFT JOIN Kayttaja ON (kayttaja_id = Kayttaja.id) WHERE ilmoitus_id = :ilmoitusId');
+        $query->execute(array($ilmoitusId));
+
+        $rows = $query->fetchAll();
+        $huudot = array();
+
+        foreach ($rows as $row) {
+            $huudot[] = new Huuto(array(
+                'id' => $row['id'],
+                'ilmoitus_id' => $row['ilmoitus_id'],
+                'kayttaja_id' => $row['kayttaja_id'],
+                'hinta' => $row['hinta'],
+                'paiva' => $row['paiva'],
+                'kayttajatunnus' => $row['kayttajatunnus']
+            ));
+
+            return $huudot;
+        }
+    }
+
     public function save()
     {
         $query = DB::connection()->prepare(

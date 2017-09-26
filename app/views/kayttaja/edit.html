@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- todo Tiedot tietokannasta-->
-<h1>Muokkaa käyttäjän: Matti Maksaja tietoja</h1>
+<h1>Muokkaa käyttäjän: {{kayttaja.kayttajatunnus}} tietoja</h1>
 
 <form method="post" action="{{base_path}}/kayttaja/muokkaa/{{kayttaja.id}}">
     <div class="form-group">
