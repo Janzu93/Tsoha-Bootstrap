@@ -19,8 +19,10 @@ class KayttajaController extends BaseController
     {
         $kayttaja = Kayttaja::find($id);
         $kayttajanHuudot = Huuto::findWithKayttajaId($id);
+        $kayttajanMyynnit = Ilmoitus::findWithKayttajaId($id);
 
-        View::make('kayttaja/kayttaja.html', array('kayttaja' => $kayttaja), array('kayttajanHuudot' => $kayttajanHuudot));
+        View::make('kayttaja/kayttaja.html',
+            array('kayttaja' => $kayttaja, 'huudot' => $kayttajanHuudot, 'myynnit' => $kayttajanMyynnit));
     }
 
     public static function create()

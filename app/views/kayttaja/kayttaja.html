@@ -2,12 +2,10 @@
 {% block content %}
 
 
-<!-- todo Tietokannasta listaus, käyttäjän huudot-->
-<!-- todo Tietokannasta listaus, käyttäjän myymät tuotteet-->
-
 <p>
     <a href="{{base_path}}/kayttaja/{{kayttaja.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
 </p>
+<h1>{{kayttaja.kayttajatunnus}}</h1>
 <ul>
     <li><strong>Etunimi: </strong>{{kayttaja.etunimi}}</li>
     <li><strong>Sukunimi: </strong>{{kayttaja.sukunimi}}</li>
@@ -24,11 +22,13 @@
     </tr>
     </thead>
     <tbody>
+    {% for ilmoitus in myynnit %}
     <tr>
-        <td><a href="#">Saapas</a></td>
-        <td>11.11.2016</td>
-        <td>2€</td>
+        <td><a href="{{base_path}}/ilmoitus/{{ilmoitus.id}}">{{ilmoitus.nimi}}</a></td>
+        <td>{{ilmoitus.alkamispaiva}}</td>
+        <td>{{ilmoitus.hintanyt}}</td>
     </tr>
+    {% endfor %}
     </tbody>
 </table>
 <h2>Huudot: </h2>
@@ -41,11 +41,13 @@
     </tr>
     </thead>
     <tbody>
+    {% for huuto in huudot %}
     <tr>
-        <td><a href="{{base_path}}/ilmoitus/{{ilmoitus.id}}">{{huuto.ilmoitus}}</a></td>
+        <td><a href="{{base_path}}/ilmoitus/{{huuto.ilmoitus_id}}">{{huuto.nimi}}</a></td>
         <td>{{huuto.paiva}}</td>
         <td>{{huuto.hinta}}</td>
     </tr>
+    {% endfor %}
     </tbody>
 </table>
 {% endblock %}

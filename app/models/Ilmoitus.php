@@ -39,6 +39,29 @@ class Ilmoitus extends BaseModel
         return $ilmoitukset;
     }
 
+    public static function findWithKayttajaId($kayttajaId)
+    {
+        $query = DB::connection()->prepare('SELECT * FROM Ilmoitus WHERE kayttaja_id = :kayttajaId');
+        $query->execute(array($kayttajaId));
+
+        $rows = $query->fetchAll();
+        $ilmoitukset = array();
+
+        foreach ($rows as $row) {
+            $ilmoitukset[] = new Ilmoitus(array(
+                'id' => $row['id'],
+                'nimi' => $row['nimi'],
+                'alkamispaiva' => $row['alkamispaiva'],
+                'paattymispaiva' => $row['paattymispaiva'],
+                'lahtohinta' => $row['lahtohinta'],
+                'hintanyt' => $row['hintanyt'],
+                'kuvaus' => $row['kuvaus'],
+                'kayttaja_id' => $row['kayttaja_id']
+            ));
+        }
+        return $ilmoitukset;
+    }
+
     public static function find($id)
     {
         $query = DB::connection()->prepare('SELECT Ilmoitus.*, Kayttaja.kayttajatunnus FROM Ilmoitus 

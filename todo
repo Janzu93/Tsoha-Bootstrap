@@ -6,9 +6,6 @@ todo Huudon muokkaus/poisto (admin)
 
 todo Huudon luontisivu
 
-todo Huudon tiedot DBstä
-todo Huutojen listaus tuotesivulla
-
-todo Huutojen listaus profiilissa (miksei tää toimi?!)
+todo Login & Auth
 
 todo Ilmoituksen luonti oikea userId

@@ -32,8 +32,7 @@
     <tbody>
     {% for huuto in huudot %}
     <tr>
-        <!-- todo Miksei tää käyttäjätunnus toimi??-->
-        <td>{{huuto.kayttajatunnus}}</td>
+        <td><a href="{{base_path}}/kayttaja/{{huuto.kayttaja_id}}">{{huuto.kayttajatunnus}}</a></td>
         <td>{{huuto.paiva}}</td>
         <td>{{huuto.hinta}}</td>
     </tr>
