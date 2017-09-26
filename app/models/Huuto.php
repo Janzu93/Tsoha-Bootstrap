@@ -35,6 +35,16 @@ class Huuto extends BaseModel
         return $huudot;
     }
 
+    public static function countIlmoituksenHuudot($ilmoitusId)
+    {
+        $query = DB::connection()->prepare('SELECT COUNT(Huuto.id) FROM Huuto LEFT JOIN Ilmoitus ON (ilmoitus_id = Ilmoitus.id) WHERE Ilmoitus.id = :ilmoitusId');
+        $query->execute(array($ilmoitusId));
+
+        $row = $query->fetch();
+
+        return $row['count'];
+    }
+
     public static function findWithKayttajaId($kayttajaId)
     {
         $query = DB::connection()->prepare('SELECT Huuto.*, Ilmoitus.id, Ilmoitus.nimi FROM Huuto LEFT JOIN Ilmoitus ON (Huuto.ilmoitus_id = Ilmoitus.id) WHERE Huuto.kayttaja_id = :kayttajaId');
