@@ -80,3 +80,7 @@ $routes->post('/new/kayttaja/', function () {
 $routes->post('/kayttaja/muokkaa/:id', function ($id) {
     KayttajaController::update($id);
 });
+
+$routes->post('new/huuto/', function () {
+    HuutoController::store();
+});
