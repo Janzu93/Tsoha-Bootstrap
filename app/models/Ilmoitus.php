@@ -8,7 +8,7 @@
 
 class Ilmoitus extends BaseModel
 {
-    public $id, $nimi, $alkamispaiva, $paattymispaiva, $lahtohinta, $hintanyt, $kuvaus, $kayttaja_id, $kayttajatunnus;
+    public $id, $nimi, $alkamispaiva, $paattymispaiva, $lahtohinta, $hintanyt, $kuvaus, $kayttaja_id, $kayttajatunnus, $huutomaara;
 
     public function __construct($attributes)
     {
@@ -17,7 +17,9 @@ class Ilmoitus extends BaseModel
 
     public static function all()
     {
-        $query = DB::connection()->prepare('SELECT Ilmoitus.*, Kayttaja.kayttajatunnus FROM Ilmoitus LEFT JOIN Kayttaja ON (Kayttaja.id = Ilmoitus.kayttaja_id) ');
+        $query = DB::connection()->prepare('SELECT Ilmoitus.*, huuto.count, Kayttaja.kayttajatunnus FROM Ilmoitus 
+LEFT JOIN Kayttaja ON (Ilmoitus.kayttaja_id = Kayttaja.id) 
+LEFT JOIN (SELECT COUNT(Huuto.id), Huuto.ilmoitus_id FROM Huuto GROUP BY(Huuto.ilmoitus_id)) AS huuto ON (Ilmoitus.id = huuto.ilmoitus_id)');
         $query->execute();
 
         $rows = $query->fetchAll();
@@ -33,7 +35,8 @@ class Ilmoitus extends BaseModel
                 'hintanyt' => $row['hintanyt'],
                 'kuvaus' => $row['kuvaus'],
                 'kayttaja_id' => $row['kayttaja_id'],
-                'kayttajatunnus' => $row['kayttajatunnus']
+                'kayttajatunnus' => $row['kayttajatunnus'],
+                'huutomaara' => $row['count']
             ));
         }
         return $ilmoitukset;
