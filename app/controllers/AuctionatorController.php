@@ -8,12 +8,6 @@ class AuctionatorController extends BaseController
         View::make('home.html');
     }
 
-
-    public static function kayttajaMuokkaus()
-    {
-        View::make('edit.html');
-    }
-
     public static function login()
     {
         View::make('login.html');
@@ -27,6 +21,8 @@ class AuctionatorController extends BaseController
     public static function sandbox()
     {
         // Testaa koodiasi täällä
+        $test = Huuto::findWithIlmoitusId(2);
+        Kint::dump($test);
     }
 
 }
