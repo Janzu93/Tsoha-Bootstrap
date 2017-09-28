@@ -77,6 +77,10 @@ $routes->post('/new/kayttaja/', function () {
     KayttajaController::store();
 });
 
+$routes->post('/new/huuto/:ilmoitusId', function ($ilmoitusId) {
+    HuutoController::store($ilmoitusId);
+});
+
 $routes->post('/kayttaja/muokkaa/:id', function ($id) {
     KayttajaController::update($id);
 });

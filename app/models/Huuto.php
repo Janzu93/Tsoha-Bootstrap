@@ -85,9 +85,13 @@ class Huuto extends BaseModel
         return $huuto;
     }
 
+    // todo Korjaa tämä niin että tulee loputkin huudot
     public static function findWithIlmoitusId($ilmoitusId)
     {
-        $query = DB::connection()->prepare('SELECT Huuto.*, Kayttaja.kayttajatunnus FROM Huuto LEFT JOIN Kayttaja ON (kayttaja_id = Kayttaja.id) WHERE ilmoitus_id = :ilmoitusId');
+        $query = DB::connection()->prepare('SELECT Huuto.*, Kayttaja.kayttajatunnus 
+FROM Huuto LEFT JOIN Kayttaja ON (kayttaja_id = Kayttaja.id) 
+LEFT JOIN Ilmoitus ON (Ilmoitus.id = Huuto.ilmoitus_id) WHERE ilmoitus_id = :ilmoitusId ORDER BY hinta DESC;
+');
         $query->execute(array($ilmoitusId));
 
         $rows = $query->fetchAll();

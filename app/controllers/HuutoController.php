@@ -9,20 +9,20 @@
 class HuutoController extends BaseController
 {
 
-    public static function store()
+    public static function store($ilmoitusId)
     {
         $params = $_POST;
 
         // todo poista hardcode id:istä
         $huuto = new Huuto(array(
-            'ilmoitus_id' => $params['ilmoitus_id'],
+            'ilmoitus_id' => $ilmoitusId,
             'kayttaja_id' => 1,
             'hinta' => $params['hinta'],
-            'paiva' => $params['paiva']
+            'paiva' => date("Y-m-d")
         ));
 
         $huuto->save();
 
-        Redirect::to('/ilmoitus/1', array('message' => 'Huuto rekisteröity!'));
+        Redirect::to('/ilmoitus/' . $ilmoitusId, array('message' => 'Huuto rekisteröity!'));
     }
 }

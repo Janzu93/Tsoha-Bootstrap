@@ -13,14 +13,15 @@ class IlmoitusController extends BaseController
     {
         $ilmoitukset = Ilmoitus::all();
 
-        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset,));
+        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset));
     }
 
     public static function ilmoitus($id)
     {
         $ilmoitus = Ilmoitus::find($id);
+        $huudot = Huuto::findWithIlmoitusId($id);
 
-        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus));
+        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus, 'huudot' => $huudot));
     }
 
     public static function edit($id)
