@@ -113,4 +113,15 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
             return null;
         }
     }
+
+    public function validate_paiva()
+    {
+        $date = $this->syntymapaiva;
+        list($vuosi, $kuukausi, $paiva) = explode("-", $date);
+        $errors = array();
+        if (!checkdate($kuukausi, $paiva, $vuosi)) {
+            $errors[] = 'Virhe syntymäpäivässä!';
+        }
+        return $errors;
+    }
 }
