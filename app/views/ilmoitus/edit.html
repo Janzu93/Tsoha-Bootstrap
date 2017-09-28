@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- todo Tiedot tietokannasta-->
 <h1>Muokkaa ilmoitusta: {{ilmoitus.nimi}}</h1>
 
 <form action="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" method="post">
@@ -14,7 +13,6 @@
                   class="form-control">{{ilmoitus.kuvaus}}</textarea>
     </div>
     <div class="form-group">
-        <!-- todo Submit napille-->
         <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
 </form>
