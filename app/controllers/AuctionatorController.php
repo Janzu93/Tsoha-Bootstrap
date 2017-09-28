@@ -7,11 +7,6 @@ class AuctionatorController extends BaseController
     {
         View::make('home.html');
     }
-
-    public static function login()
-    {
-        View::make('login.html');
-    }
     public static function admin()
     {
         View::make('admin.html');

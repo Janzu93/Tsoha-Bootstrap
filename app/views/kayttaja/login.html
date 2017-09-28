@@ -2,19 +2,15 @@
 {% block content %}
 <h1>Kirjaudu sisään</h1>
 
-<form>
-
+<form method="post" action="{{base_path}}/login">
     <!-- todo Login toiminnallisuus-->
-    <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">
         <label>Käyttäjätunnus</label>
-        <input type="text" class="form-control">
+        <input type="text" name="kayttajatunnus" value="{{kayttajatunnus}}" class="form-control">
     </div>
-
-    <!-- Salasanakenttä salasanalle -->
     <div class="form-group">
         <label>Salasana</label>
-        <input type="password" class="form-control">
+        <input type="password" name="salasana" class="form-control">
     </div>
 
     <button type="submit" class="btn btn-primary">Kirjaudu sisään</button>

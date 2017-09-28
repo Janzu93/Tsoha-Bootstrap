@@ -89,4 +89,28 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
             'osoite' => $this->osoite));
 
     }
+
+    public static function authenticate($kayttajatunnus, $salasana)
+    {
+        $query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE kayttajatunnus = :kayttajatunnus AND salasana = :salasana LIMIT 1');
+        $query->execute(array('kayttajatunnus' => $kayttajatunnus, 'salasana' => $salasana));
+
+        $row = $query->fetch();
+
+        if ($row) {
+            $kayttaja = new Kayttaja(array(
+                'id' => $row['id'],
+                'etunimi' => $row['etunimi'],
+                'sukunimi' => $row['sukunimi'],
+                'kayttajatunnus' => $row['kayttajatunnus'],
+                'salasana' => $row['salasana'],
+                'syntymapaiva' => $row['syntymapaiva'],
+                'osoite' => $row['osoite'],
+                'oikeudet' => $row['oikeudet']));
+
+            return $kayttaja;
+        } else {
+            return null;
+        }
+    }
 }

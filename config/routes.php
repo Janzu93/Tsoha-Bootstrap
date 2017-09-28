@@ -34,7 +34,7 @@ $routes->get('/ilmoitus/muokkaa/:id', function ($id) {
 });
 
 $routes->get('/login', function () {
-    AuctionatorController::login();
+    KayttajaController::login();
 });
 
 $routes->get('/kayttaja/new', function () {
@@ -85,6 +85,6 @@ $routes->post('/kayttaja/muokkaa/:id', function ($id) {
     KayttajaController::update($id);
 });
 
-$routes->post('new/huuto/', function () {
-    HuutoController::store();
+$routes->post('/login', function () {
+    KayttajaController::handle_login();
 });

@@ -47,7 +47,7 @@ class IlmoitusController extends BaseController
             'lahtohinta' => $params['lahtohinta'],
             'hintanyt' => $params['lahtohinta'],
             'kuvaus' => $params['kuvaus'],
-            'kayttaja_id' => 1
+            'kayttaja_id' => $_SESSION['kayttaja']
         ));
 
         $ilmoitus->save();

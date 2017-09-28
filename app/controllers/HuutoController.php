@@ -13,10 +13,9 @@ class HuutoController extends BaseController
     {
         $params = $_POST;
 
-        // todo poista hardcode id:istä
         $huuto = new Huuto(array(
             'ilmoitus_id' => $ilmoitusId,
-            'kayttaja_id' => 1,
+            'kayttaja_id' => $_SESSION['kayttaja'],
             'hinta' => $params['hinta'],
             'paiva' => date("Y-m-d")
         ));

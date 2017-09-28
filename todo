@@ -1,11 +1,7 @@
-todo Huudon luonti
-
-todo Parempi tunnistautuminen (ei passua db:hen!)
-
 todo Huudon muokkaus/poisto (admin)
 
-todo Huudon luontisivu
+todo Poistonapit
 
-todo Login & Auth
+todo Validaattorit malleihin
 
-todo Ilmoituksen luonti oikea userId
+todo Uloskirjautuminen
