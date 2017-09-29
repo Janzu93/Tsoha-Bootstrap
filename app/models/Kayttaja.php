@@ -13,6 +13,12 @@ class Kayttaja extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+
+        $this->validators = array($this->validate_etunimi(),
+            $this->validate_sukunimi(),
+            $this->validate_kayttajatunnus(),
+            $this->validate_osoite(),
+            $this->validate_syntymapaiva());
     }
 
     public static function all()
@@ -114,13 +120,84 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
         }
     }
 
-    public function validate_paiva()
+    public function validate_syntymapaiva()
     {
         $date = $this->syntymapaiva;
-        list($vuosi, $kuukausi, $paiva) = explode("-", $date);
         $errors = array();
-        if (!checkdate($kuukausi, $paiva, $vuosi)) {
+
+        if ($date == null || $date == '') {
+            $errors[] = 'Syötithän syntymäpäiväsi?';
+            return $errors;
+        }
+
+        list($vuosi, $kuukausi, $paiva) = explode("-", $date);
+
+        if ($vuosi < 1900 || strftime('%Y') < $vuosi || !checkdate($kuukausi, $paiva, $vuosi)) {
             $errors[] = 'Virhe syntymäpäivässä!';
+        }
+        return $errors;
+    }
+
+    public function validate_kayttajatunnus()
+    {
+        $errors = array();
+        if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
+            $errors[] = 'Kayttajatunnus ei saa olla tyhjä!';
+        }
+        if (strlen($this->kayttajatunnus) < 3 || strlen($this->kayttajatunnus) > 30) {
+            $errors[] = 'Kayttajatunnuksen tulee olla 3-30 merkkiä pitkä';
+        }
+        return $errors;
+    }
+
+    public function validate_etunimi()
+    {
+        $errors = array();
+
+        if ($this->etunimi == '' || $this->etunimi == null) {
+            $errors[] = 'Etunimi ei saa olla tyhjä';
+        }
+        if (strlen($this->etunimi) < 3 || strlen($this->etunimi) > 20) {
+            $errors[] = 'Etunimen tulee olla 3-20 merkkiä pitkä';
+        }
+        return $errors;
+    }
+
+    public function validate_sukunimi()
+    {
+        $errors = array();
+
+        if ($this->sukunimi == '' || $this->sukunimi == null) {
+            $errors[] = 'Sukunimi ei saa olla tyhjä';
+        }
+        if (strlen($this->sukunimi) < 3 || strlen($this->sukunimi) > 20) {
+            $errors[] = 'Sukunimen tulee olla 3-20 merkkiä pitkä';
+        }
+        return $errors;
+    }
+
+    public function validate_salasana()
+    {
+        $errors = array();
+
+        if ($this->salasana == '' || $this->salasana == null) {
+            $errors[] = 'Salasana ei saa olla tyhjä';
+        }
+        if (strlen($this->salasana) < 6 || strlen($this->salasana) > 30) {
+            $errors[] = 'Salasanan tulee olla 6-30 merkkiä pitkä';
+        }
+        return $errors;
+    }
+
+    public function validate_osoite()
+    {
+        $errors = array();
+
+        if ($this->osoite == '' || $this->osoite == null) {
+            $errors[] = 'Osoite ei saa olla tyhjä';
+        }
+        if (strlen($this->osoite) < 6 || strlen($this->osoite) > 100) {
+            $errors[] = 'Osoitteen tulee olla 6-100 merkkiä pitkä';
         }
         return $errors;
     }
