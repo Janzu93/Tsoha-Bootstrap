@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-{% import "macros/viestit.html" as viestit %}
 <h1>Rekisteröidy</h1>
-
-{{viestit.viestit(message, errors)}}
 
 <form method="post" action="{{base_path}}/new/kayttaja">
 

@@ -53,7 +53,10 @@
 
 <div id="main-container">
     <!-- Dynaaminen sisältö tulee tähän -->
-    {% block content %}{% endblock %}
+    {% import "macros/viestit.html" as viestit %}
+    {{viestit.viestit(message, errors)}}
+    {% block content %}
+    {% endblock %}
 </div>
 
 {% block body %}
