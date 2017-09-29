@@ -24,9 +24,8 @@
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
 
           $validator_errors = array();
-          $validator_errors[] = $validator;
 
-          $errors = array_merge($errors, $validator_errors);
+          $errors = array_merge($errors, $validator);
       }
 
       return $errors;

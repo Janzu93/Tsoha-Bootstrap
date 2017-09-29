@@ -34,24 +34,28 @@ class KayttajaController extends BaseController
     public static function store()
     {
         $params = $_POST;
-        try {
-            $kayttaja = new Kayttaja(array(
-                'etunimi' => $params['etunimi'],
-                'sukunimi' => $params['sukunimi'],
-                'kayttajatunnus' => $params['kayttajatunnus'],
-                'salasana' => $params['salasana'],
-                'syntymapaiva' => $params['syntymapaiva'],
-                'osoite' => $params['osoite'],
-                'oikeudet' => 0,
-                'checkbox' => $params['checkbox']
-            ));
-            if ($params['checkbox']) {
-                $kayttaja->save();
 
-                Redirect::to('/', array('message' => 'Käyttäjä rekisteröity'));
-            }
-        } catch (ErrorException $e) {
-            Redirect::to('/new/kayttaja', array('message' => 'Sinun pitää sallia tietojen tallentaminen'));
+        $attributes = array(
+            'etunimi' => $params['etunimi'],
+            'sukunimi' => $params['sukunimi'],
+            'kayttajatunnus' => $params['kayttajatunnus'],
+            'salasana' => $params['salasana'],
+            'syntymapaiva' => $params['syntymapaiva'],
+            'osoite' => $params['osoite'],
+            'oikeudet' => 0);
+
+        $kayttaja = new Kayttaja($attributes);
+        $errors = $kayttaja->errors();
+
+        if (!isset($params['checkbox'])) {
+            array_push($errors, 'Sinun pitää sallia tietojen tallentaminen tietokantaan!');
+        }
+        if (count($errors) == 0) {
+            $kayttaja->save();
+
+            Redirect::to('/', array('message' => 'Käyttäjä rekisteröity'));
+        } else {
+            Redirect::to('/new/kayttaja', array('errors' => $errors, 'attributes' => $attributes));
         }
     }
 
