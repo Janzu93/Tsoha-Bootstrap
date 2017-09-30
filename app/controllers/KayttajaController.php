@@ -70,13 +70,22 @@ class KayttajaController extends BaseController
     {
         $params = $_POST;
 
-        $kayttaja = new Kayttaja(array(
+        $attributes = array(
             'salasana' => $params['salasana'],
-            'osoite' => $params['osoite']));
+            'osoite' => $params['osoite']);
 
-        $kayttaja->update($id);
+        $kayttaja = new Kayttaja($attributes);
 
-        Redirect::to('/kayttaja/' . $id, array('message' => 'Käyttäjätiedot päivitetty!'));
+        $errors = $kayttaja->validate_salasana();
+        $errors = array_merge($errors, $kayttaja->validate_osoite());
+
+        if (count($errors) == 0) {
+            $kayttaja->update($id);
+
+            Redirect::to('/kayttaja/' . $id, array('message' => 'Käyttäjätiedot päivitetty!'));
+        } else {
+            Redirect::to('/kayttaja/' . $id, array('errors' => $errors), 'attributes => $attributes');
+        }
 
     }
 
