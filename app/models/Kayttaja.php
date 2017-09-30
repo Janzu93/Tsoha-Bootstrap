@@ -120,6 +120,19 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
         }
     }
 
+    public function destroy($id)
+    {
+
+        $query = DB::connection()->prepare('DELETE FROM Huuto WHERE kayttaja_id = :id');
+        $query->execute(array($id));
+        $query = DB::connection()->prepare('DELETE FROM Ilmoitus WHERE kayttaja_id = :id');
+        $query->execute(array($id));
+        $query = DB::connection()->prepare('DELETE FROM Kayttaja WHERE id = :id');
+        $query->execute(array($id));
+
+        Redirect::to('/', array('message' => 'Käyttäjä poistettu!'));
+    }
+
     public function validate_syntymapaiva()
     {
         $date = $this->syntymapaiva;

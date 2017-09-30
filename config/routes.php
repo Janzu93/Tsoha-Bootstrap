@@ -88,3 +88,15 @@ $routes->post('/kayttaja/muokkaa/:id', function ($id) {
 $routes->post('/login', function () {
     KayttajaController::handle_login();
 });
+
+$routes->post('/delete/ilmoitus/:id', function ($id) {
+    IlmoitusController::destroy($id);
+});
+
+$routes->post('/delete/kayttaja/:id', function ($id) {
+    KayttajaController::destroy($id);
+});
+
+$routes->post('/delete/huuto/:id', function ($id) {
+    HuutoController::destroy($id);
+});

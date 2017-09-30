@@ -2,9 +2,11 @@
 {% block content %}
 <h1>{{ilmoitus.nimi}}</h1>
 <p>
-    <!-- todo 'Poista' painike-->
-    <button class="btn btn-danger">Poista</button>
-    <a href="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" class="btn btn-default">Muokkaa</a>
+
+<form method="post" action="{{base_path}}/delete/ilmoitus/{{ilmoitus.id}}">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+<a href="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" class="btn btn-default">Muokkaa</a>
 </p>
 <!-- todo kaupan tila -->
 <ul>

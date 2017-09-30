@@ -62,6 +62,13 @@ class IlmoitusController extends BaseController
         }
     }
 
+    public static function destroy($id)
+    {
+        $ilmoitus = Ilmoitus::find($id);
+
+        $ilmoitus->destroy($id);
+    }
+
     public static function update($id)
     {
         $params = $_POST;

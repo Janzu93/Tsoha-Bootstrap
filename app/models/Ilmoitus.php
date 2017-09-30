@@ -203,4 +203,15 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
             'kuvaus' => $this->kuvaus));
 
     }
+
+    public function destroy($id)
+    {
+        $query = DB::connection()->prepare('DELETE FROM Huuto WHERE ilmoitus_id = :id');
+        $query->execute(array($id));
+
+        $query = DB::connection()->prepare('DELETE FROM Ilmoitus WHERE Ilmoitus.id = :id');
+        $query->execute(array($id));
+
+        Redirect::to('/', array('message' => 'Ilmoitus poistettu!'));
+    }
 }

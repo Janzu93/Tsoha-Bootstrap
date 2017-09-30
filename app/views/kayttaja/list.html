@@ -15,9 +15,9 @@
     <tr>
         <td><a href="{{base_path}}/kayttaja/{{kayttaja.id}}">{{kayttaja.kayttajatunnus}}</a></td>
         <td>
-            <a href="#">
-                <button class="btn btn-danger">Poista</button>
-            </a>
+            <form method="post" action="{{base_path}}/delete/kayttaja/{{kayttaja.id}}">
+                <button type="submit" class="btn btn-danger">Poista</button>
+            </form>
             <a href="{{base_path}}/kayttaja/muokkaa/{{kayttaja.id}}" class="btn btn-default">Muokkaa</a>
         </td>
     </tr>

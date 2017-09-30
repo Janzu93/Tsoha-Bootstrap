@@ -31,4 +31,12 @@ class HuutoController extends BaseController
             Redirect::to('/ilmoitus/' . $ilmoitusId, array('errors' => $errors, 'attributes' => $attributes));
         }
     }
+
+    public static function destroy($id)
+    {
+        $huuto = Huuto::find($id);
+        $huuto->destroy($id);
+
+        Redirect::to('/listaus', array('message' => 'Huuto poistettu'));
+    }
 }

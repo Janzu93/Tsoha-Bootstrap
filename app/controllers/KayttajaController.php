@@ -66,6 +66,13 @@ class KayttajaController extends BaseController
         View::make('/kayttaja/edit.html', array('kayttaja' => $kayttaja));
     }
 
+    public static function destroy($id)
+    {
+        $kayttaja = Kayttaja::find($id);
+
+        $kayttaja->destroy($id);
+    }
+
     public static function update($id)
     {
         $params = $_POST;

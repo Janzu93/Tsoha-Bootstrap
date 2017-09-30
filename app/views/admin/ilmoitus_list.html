@@ -30,7 +30,9 @@
         <td>{{ilmoitus.hintanyt}} €</td>
         <td>{{ilmoitus.huutomaara}}</td>
         <td>
-            <button class="btn btn-danger">Poista</button>
+            <form method="post" action="{{base_path}}/delete/ilmoitus/{{ilmoitus.id}}">
+                <button type="submit" class="btn btn-danger">Poista</button>
+            </form>
         </td>
         <td>
             <a href="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}">
@@ -38,7 +40,7 @@
             </a>
         </td>
     </tr>
-    </tbody>
     {% endfor %}
+    </tbody>
 </table>
 {% endblock %}

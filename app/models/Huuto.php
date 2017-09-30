@@ -113,6 +113,12 @@ LEFT JOIN Ilmoitus ON (Ilmoitus.id = Huuto.ilmoitus_id) WHERE ilmoitus_id = :ilm
         }
     }
 
+    public function destroy($id)
+    {
+        $query = DB::connection()->prepare('DELETE FROM Huuto WHERE Huuto.id = :id');
+        $query->execute(array($id));
+    }
+
     public function save()
     {
         $query = DB::connection()->prepare(
