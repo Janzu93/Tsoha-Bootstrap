@@ -9,8 +9,8 @@ Dokumentaatio: https://github.com/Janzu93/tsoha-bootstrap/blob/master/doc/dokume
 
 ## Tunnukset kirjautumiseen
 
-Käyttäjätunnus: Tester123 | Salasana: test2552552550
-Käyttäjätunnus: PePe | Salasana: salasana
+Käyttäjätunnus: Tester123 | Salasana: test2552552550<br/>
+Käyttäjätunnus: PePe | Salasana: salasana<br/>
 Käyttäjätunnus: MaMa | Salasana: peelo123
 
 ## Listaussivut
