@@ -13,6 +13,8 @@ class Huuto extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+
+        $this->validators = array($this->validate_hinta());
     }
 
     public static function all()
@@ -125,5 +127,18 @@ VALUES (:ilmoitus_id, :kayttaja_id, :hinta, :paiva) RETURNING id');
 
         $row = $query->fetch();
         $this->id = $row['id'];
+    }
+
+    public function validate_hinta()
+    {
+        $errors = array();
+
+        if ($this->hinta <= 0 || $this->hinta == null) {
+            $errors[] = 'Määritithän huutosi hinnan?';
+        }
+        if ($this->hinta > 999999) {
+            $errors[] = 'Määrittämäsi hinta on liian suuri';
+        }
+        return $errors;
     }
 }

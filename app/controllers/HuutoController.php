@@ -13,15 +13,22 @@ class HuutoController extends BaseController
     {
         $params = $_POST;
 
-        $huuto = new Huuto(array(
+        $attributes = array(
             'ilmoitus_id' => $ilmoitusId,
             'kayttaja_id' => $_SESSION['kayttaja'],
             'hinta' => $params['hinta'],
             'paiva' => date("Y-m-d")
-        ));
+        );
 
-        $huuto->save();
+        $huuto = new Huuto($attributes);
 
-        Redirect::to('/ilmoitus/' . $ilmoitusId, array('message' => 'Huuto rekisteröity!'));
+        $errors = $huuto->errors();
+        if (count($errors) == 0) {
+            $huuto->save();
+
+            Redirect::to('/ilmoitus/' . $ilmoitusId, array('message' => 'Huuto rekisteröity!'));
+        } else {
+            Redirect::to('/ilmoitus/' . $ilmoitusId, array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 }
