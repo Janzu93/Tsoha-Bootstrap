@@ -2,7 +2,7 @@ CREATE TABLE Kayttaja(
  id serial primary key,
  etunimi VARCHAR(20) not null,
  sukunimi VARCHAR(20) not null,
- kayttajatunnus VARCHAR not null,
+ kayttajatunnus VARCHAR(10) UNIQUE not null,
  salasana VARCHAR(32) not null,
  syntymapaiva DATE not null,
  osoite VARCHAR(100) not null,

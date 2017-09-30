@@ -153,12 +153,12 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
 
     public function validate_kayttajatunnus()
     {
-        $errors = array();
+
         if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
             $errors[] = 'Kayttajatunnus ei saa olla tyhjä!';
         }
-        if (strlen($this->kayttajatunnus) < 3 || strlen($this->kayttajatunnus) > 30) {
-            $errors[] = 'Kayttajatunnuksen tulee olla 3-30 merkkiä pitkä';
+        if (strlen($this->kayttajatunnus) < 3 || strlen($this->kayttajatunnus) > 10) {
+            $errors[] = 'Kayttajatunnuksen tulee olla 3-10 merkkiä pitkä';
         }
         return $errors;
     }
@@ -196,8 +196,8 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
         if ($this->salasana == '' || $this->salasana == null) {
             $errors[] = 'Salasana ei saa olla tyhjä';
         }
-        if (strlen($this->salasana) < 6 || strlen($this->salasana) > 30) {
-            $errors[] = 'Salasanan tulee olla 6-30 merkkiä pitkä';
+        if (strlen($this->salasana) < 6 || strlen($this->salasana) > 32) {
+            $errors[] = 'Salasanan tulee olla 6-32 merkkiä pitkä';
         }
         return $errors;
     }

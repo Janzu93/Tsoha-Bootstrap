@@ -7,6 +7,7 @@ class AuctionatorController extends BaseController
     {
         View::make('home.html');
     }
+
     public static function admin()
     {
         View::make('admin.html');
@@ -16,8 +17,7 @@ class AuctionatorController extends BaseController
     public static function sandbox()
     {
         // Testaa koodiasi täällä
-        $test = Huuto::findWithIlmoitusId(2);
-        Kint::dump($test);
+
     }
 
 }
