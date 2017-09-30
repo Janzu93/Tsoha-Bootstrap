@@ -154,6 +154,8 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
     public function validate_kayttajatunnus()
     {
 
+        $errors = array();
+
         if ($this->kayttajatunnus == '' || $this->kayttajatunnus == null) {
             $errors[] = 'Kayttajatunnus ei saa olla tyhjä!';
         }
