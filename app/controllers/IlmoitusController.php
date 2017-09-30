@@ -40,7 +40,7 @@ class IlmoitusController extends BaseController
     {
         $params = $_POST;
 
-        $ilmoitus = new Ilmoitus(array(
+        $attributes = array(
             'nimi' => $params['nimi'],
             'alkamispaiva' => date('Y-m-d'),
             'paattymispaiva' => $params['paattymispaiva'],
@@ -48,11 +48,18 @@ class IlmoitusController extends BaseController
             'hintanyt' => $params['lahtohinta'],
             'kuvaus' => $params['kuvaus'],
             'kayttaja_id' => $_SESSION['kayttaja']
-        ));
+        );
 
-        $ilmoitus->save();
+        $ilmoitus = new Ilmoitus($attributes);
+        $errors = $ilmoitus->errors();
 
-        Redirect::to('/listaus', array('message' => 'Tuote asetettu myytäväksi!'));
+        if (count($errors) == 0) {
+            $ilmoitus->save();
+
+            Redirect::to('/listaus', array('message' => 'Tuote asetettu myytäväksi!'));
+        } else {
+            Redirect::to('/new/ilmoitus', array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
 
     public static function update($id)

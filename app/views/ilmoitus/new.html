@@ -6,21 +6,21 @@
 
     <div class="form-group">
         <label>Tuotteen nimi</label>
-        <input type="text" name="nimi" class="form-control">
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
 
     <div class="form-group">
         <label>Lähtöhinta</label>
-        <input type="number" step="0.01" name="lahtohinta" class="form-control">
+        <input type="number" step="0.01" name="lahtohinta" class="form-control" value="{{attributes.lahtohinta}}">
     </div>
 
     <div class="form-group">
         <label>Päättymispäivä</label>
-        <input type="date" name="paattymispaiva" class="form-control">
+        <input type="date" name="paattymispaiva" class="form-control" value="{{attributes.paattymispaiva}}">
     </div>
     <div>
         <label>Kuvaus</label>
-        <textarea class="form-group" name="kuvaus"></textarea>
+        <textarea class="form-group" name="kuvaus">{{attributes.kuvaus}}</textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Myy tuote</button>

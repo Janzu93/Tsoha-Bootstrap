@@ -13,6 +13,11 @@ class Ilmoitus extends BaseModel
     public function __construct($attributes)
     {
         parent::__construct($attributes);
+
+        $this->validators = array($this->validate_nimi(),
+            $this->validate_paattymispaiva(),
+            $this->validate_lahtohinta(),
+            $this->validate_kuvaus());
     }
 
     public static function all()
@@ -107,6 +112,84 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
         $row = $query->fetch();
         $this->id = $row['id'];
 
+    }
+
+    public function validate_nimi()
+    {
+        $errors = array();
+
+        if ($this->nimi == null || strlen($this->nimi) == 0) {
+            $errors[] = 'Ilmoituksen nimi ei saa olla tyhjä';
+            return $errors;
+        }
+        if (strlen($this->nimi) < 3 || strlen($this->nimi) > 200) {
+            $errors[] = 'Ilmoituksen nimen tulee olla 3-200 merkkiä';
+        }
+
+        return $errors;
+    }
+
+    public function validate_paattymispaiva()
+    {
+        $date = $this->paattymispaiva;
+        $paivaero = date_diff(date_create(date('Y-m-d')), date_create($date))->format('%r%d');
+        $errors = array();
+
+        if ($date == null || $date == '') {
+            $errors[] = 'Ilmoituksen päättymispäivä ei voi olla tyhjä';
+            return $errors;
+        }
+
+        list($vuosi, $kuukausi, $paiva) = explode("-", $date);
+
+        if (!checkdate($kuukausi, $paiva, $vuosi)) {
+            $errors[] = 'Virhe päättymispäivässä!';
+        }
+
+        if ($paivaero < 0) {
+            $errors[] = 'Päättymispäivä ei voi olla menneisyydessä!';
+        } else if ($paivaero == 0) {
+            $errors[] = 'Päättymispäivä ei voi olla tänään!';
+        } else if ($paivaero > 7) {
+            $errors[] = 'Ilmoitus voi olla voimassa korkeintaan viikon!';
+        }
+
+        return $errors;
+    }
+
+    public function validate_lahtohinta()
+    {
+        $errors = array();
+
+        if ($this->lahtohinta == null || $this->lahtohinta == 0) {
+            $errors[] = 'Lähtöhinta ei voi olla 0!';
+        }
+        if ($this->lahtohinta < 0) {
+            $errors[] = 'Lähtöhinta ei voi olla negatiivinen!';
+        }
+        if ($this->lahtohinta > 999999) {
+            $errors[] = 'Lähtöhinta on liian suuri';
+        }
+
+        return $errors;
+    }
+
+    public function validate_kuvaus()
+    {
+        $errors = array();
+
+        if ($this->kuvaus == null || strlen($this->kuvaus) == 0) {
+            $errors[] = 'Ilmoituksen kuvaus ei saa olla tyhjä';
+            return $errors;
+        }
+        if (strlen($this->kuvaus) < 3) {
+            $errors[] = 'Ilmoituksen kuvauksen olla vähintään 3 merkkiä pitkä';
+        }
+        if (strlen($this->kuvaus) > 1000) {
+            $errors[] = 'Ilmoituksen kuvaus on liian pitkä (max 1000)';
+        }
+
+        return $errors;
     }
 
     public function update($id)
