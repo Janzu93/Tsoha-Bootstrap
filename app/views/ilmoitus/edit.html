@@ -2,15 +2,15 @@
 {% block content %}
 <h1>Muokkaa ilmoitusta: {{ilmoitus.nimi}}</h1>
 
-<form action="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" method="post">
+<form action="{{base_path}}/ilmoitus/muokkaa/{{attributes.id}}" method="post">
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" name="nimi" class="form-control" value="{{ilmoitus.nimi}}">
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
     <div class="form-group">
         <label>Kuvaus</label>
         <textarea name="kuvaus"
-                  class="form-control">{{ilmoitus.kuvaus}}</textarea>
+                  class="form-control">{{attributes.kuvaus}}</textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Tallenna</button>

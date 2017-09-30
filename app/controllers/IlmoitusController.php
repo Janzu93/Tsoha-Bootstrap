@@ -28,7 +28,7 @@ class IlmoitusController extends BaseController
     {
         $ilmoitus = Ilmoitus::find($id);
 
-        View::make('ilmoitus/edit.html', array('ilmoitus' => $ilmoitus));
+        View::make('ilmoitus/edit.html', array('attributes' => $ilmoitus));
     }
 
     public static function create()
@@ -66,13 +66,23 @@ class IlmoitusController extends BaseController
     {
         $params = $_POST;
 
-        $ilmoitus = new Ilmoitus(array(
+        $attributes = array(
+            'id' => $id,
             'nimi' => $params['nimi'],
-            'kuvaus' => $params['kuvaus']));
+            'kuvaus' => $params['kuvaus']);
 
-        $ilmoitus->update($id);
+        $ilmoitus = new Ilmoitus($attributes);
+        $errors = $ilmoitus->validate_nimi();
+        $errors = array_merge($errors, $ilmoitus->validate_kuvaus());
 
-        Redirect::to('/listaus' . $ilmoitus->id, array('message' => 'Tuote päivitetty!'));
+
+        if (count($errors) == 0) {
+            $ilmoitus->update($id);
+
+            Redirect::to('/listaus', array('message' => 'Tuote päivitetty!'));
+        } else {
+            Redirect::to('/ilmoitus/muokkaa/' . $id, array('errors' => $errors, 'attributes' => $attributes));
+        }
 
     }
 }
