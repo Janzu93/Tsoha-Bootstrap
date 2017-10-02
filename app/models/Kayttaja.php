@@ -82,6 +82,8 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
 
         $row = $query->fetch();
         $this->id = $row['id'];
+
+        // todo Ryhma_Kayttaja tauluun tietojen lisääminen
     }
 
     public function update($id)
