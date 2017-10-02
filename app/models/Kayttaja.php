@@ -37,8 +37,7 @@ class Kayttaja extends BaseModel
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana'],
                 'syntymapaiva' => $row['syntymapaiva'],
-                'osoite' => $row['osoite'],
-                'oikeudet' => $row['oikeudet']
+                'osoite' => $row['osoite']
             ));
         }
         return $kayttajat;
@@ -58,8 +57,7 @@ class Kayttaja extends BaseModel
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana'],
                 'syntymapaiva' => $row['syntymapaiva'],
-                'osoite' => $row['osoite'],
-                'oikeudet' => $row['oikeudet']
+                'osoite' => $row['osoite']
             ));
         }
         return $kayttaja;
@@ -68,8 +66,8 @@ class Kayttaja extends BaseModel
     public function save()
     {
         $query = DB::connection()->prepare(
-            'INSERT INTO Kayttaja (etunimi, sukunimi, kayttajatunnus, salasana, syntymapaiva, osoite, oikeudet) 
-VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite, :oikeudet) RETURNING id');
+            'INSERT INTO Kayttaja (etunimi, sukunimi, kayttajatunnus, salasana, syntymapaiva, osoite) 
+VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite) RETURNING id');
 
         $query->execute(array(
             'etunimi' => $this->etunimi,
@@ -77,8 +75,7 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite,
             'kayttajatunnus' => $this->kayttajatunnus,
             'salasana' => $this->salasana,
             'syntymapaiva' => $this->syntymapaiva,
-            'osoite' => $this->osoite,
-            'oikeudet' => $this->oikeudet));
+            'osoite' => $this->osoite));
 
         $row = $query->fetch();
         $this->id = $row['id'];

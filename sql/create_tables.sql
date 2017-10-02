@@ -5,8 +5,7 @@ CREATE TABLE Kayttaja(
  kayttajatunnus VARCHAR(10) UNIQUE not null,
  salasana VARCHAR(32) not null,
  syntymapaiva DATE not null,
- osoite VARCHAR(100) not null,
- oikeudet NUMERIC(1,0) DEFAULT 0 not null
+ osoite VARCHAR(100) not null
 );
 
 CREATE TABLE Ilmoitus(

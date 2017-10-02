@@ -42,7 +42,7 @@ class KayttajaController extends BaseController
             'salasana' => $params['salasana'],
             'syntymapaiva' => $params['syntymapaiva'],
             'osoite' => $params['osoite'],
-            'oikeudet' => 0);
+            'oikeudet' => 1);
 
         $kayttaja = new Kayttaja($attributes);
         $errors = $kayttaja->errors();
@@ -52,6 +52,7 @@ class KayttajaController extends BaseController
         }
         if (count($errors) == 0) {
             $kayttaja->save();
+            RyhmaKayttajaController::store($kayttaja->oikeudet, $kayttaja->id);
 
             Redirect::to('/', array('message' => 'Käyttäjä rekisteröity'));
         } else {
