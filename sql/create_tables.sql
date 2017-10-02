@@ -27,3 +27,13 @@ CREATE TABLE Huuto(
  hinta NUMERIC(8,2) not null,
  paiva DATE not null
 );
+
+CREATE TABLE Ryhma(
+ id SERIAL primary key,
+ nimi VARCHAR(10)
+);
+
+CREATE TABLE Ryhma_Kayttaja(
+ ryhma_id SERIAL REFERENCES Ryhma(id),
+ kayttaja_id SERIAL REFERENCES Kayttaja(id)
+);

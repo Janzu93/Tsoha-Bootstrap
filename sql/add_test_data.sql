@@ -19,3 +19,21 @@ INSERT INTO Huuto(ilmoitus_id, kayttaja_id, hinta, paiva)
 
 INSERT INTO Huuto(ilmoitus_id, kayttaja_id, hinta, paiva)
  VALUES (2, 1, 2.00, '2016-12-24');
+
+INSERT INTO Ryhma(nimi)
+ VALUES ('Kayttaja');
+
+INSERT INTO Ryhma(nimi)
+ VALUES ('Valvoja');
+
+INSERT INTO Ryhma(nimi)
+ VALUES ('Admin');
+
+INSERT INTO Ryhma_Kayttaja(ryhma_id, kayttaja_id)
+ VALUES (1, 1);
+
+INSERT INTO Ryhma_Kayttaja(ryhma_id, kayttaja_id)
+ VALUES (1, 2);
+
+INSERT INTO Ryhma_Kayttaja
+ VALUES (1, 3);
