@@ -93,6 +93,10 @@ $routes->post('/login', function () {
     KayttajaController::handle_login();
 });
 
+$routes->post('/logout', 'check_logged_in', function () {
+    KayttajaController::logout();
+});
+
 $routes->post('/delete/ilmoitus/:id', 'check_logged_in', function ($id) {
     IlmoitusController::destroy($id);
 });

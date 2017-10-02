@@ -21,7 +21,7 @@ class BaseController
         // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
 
         if (!isset($_SESSION['kayttaja'])) {
-            Redirect::to('/login', array('message' => 'Et ole kirjautunut sisään'));
+            Redirect::to('/login', array('errors' => array('Et ole kirjautunut sisään')));
         }
     }
 
