@@ -1,14 +1,18 @@
 <?php
 
+function check_logged_in()
+{
+    BaseController::check_logged_in();
+}
 $routes->get('/', function () {
     AuctionatorController::index();
 });
 
-$routes->get('/kayttaja/:id', function ($id) {
+$routes->get('/kayttaja/:id', 'check_logged_in', function ($id) {
     KayttajaController::page($id);
 });
 
-$routes->get('/admin', function () {
+$routes->get('/admin', 'check_logged_in', function () {
     AuctionatorController::admin();
 });
 
@@ -16,7 +20,7 @@ $routes->get('/listaus', function () {
     IlmoitusController::index();
 });
 
-$routes->get('/ilmoitus/:id', function ($id) {
+$routes->get('/ilmoitus/:id', 'check_logged_in', function ($id) {
     IlmoitusController::ilmoitus($id);
 });
 
@@ -25,11 +29,11 @@ $routes->get('/hiekkalaatikko', function () {
     AuctionatorController::sandbox();
 });
 
-$routes->get('/muokkaa/kayttaja', function () {
+$routes->get('/muokkaa/kayttaja', 'check_logged_in', function () {
     AuctionatorController::kayttajaMuokkaus();
 });
 
-$routes->get('/ilmoitus/muokkaa/:id', function ($id) {
+$routes->get('/ilmoitus/muokkaa/:id', 'check_logged_in', function ($id) {
     IlmoitusController::edit($id);
 });
 
@@ -41,15 +45,15 @@ $routes->get('/kayttaja/new', function () {
     KayttajaController::create();
 });
 
-$routes->get('/admin/listaus', function () {
+$routes->get('/admin/listaus', 'check_logged_in', function () {
     AdminController::ilmoitusList();
 });
 
-$routes->get('/admin/kayttajat', function () {
+$routes->get('/admin/kayttajat', 'check_logged_in', function () {
     KayttajaController::index();
 });
 
-$routes->get('/new/ilmoitus/', function () {
+$routes->get('/new/ilmoitus/', 'check_logged_in', function () {
     IlmoitusController::create();
 });
 
@@ -57,19 +61,19 @@ $routes->get('/new/kayttaja/', function () {
     KayttajaController::create();
 });
 
-$routes->get('/kayttaja/muokkaa/:id', function ($id) {
+$routes->get('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
     KayttajaController::edit($id);
 });
 
-$routes->post('/new/ilmoitus/', function () {
+$routes->post('/new/ilmoitus/', 'check_logged_in', function () {
     IlmoitusController::store();
 });
 
-$routes->post('/ilmoitus/muokkaa/:id', function ($id) {
+$routes->post('/ilmoitus/muokkaa/:id', 'check_logged_in', function ($id) {
     IlmoitusController::update($id);
 });
 
-$routes->post('/new/ilmoitus/', function () {
+$routes->post('/new/ilmoitus/', 'check_logged_in', function () {
     IlmoitusController::store();
 });
 
@@ -77,11 +81,11 @@ $routes->post('/new/kayttaja/', function () {
     KayttajaController::store();
 });
 
-$routes->post('/new/huuto/:ilmoitusId', function ($ilmoitusId) {
+$routes->post('/new/huuto/:ilmoitusId', 'check_logged_in', function ($ilmoitusId) {
     HuutoController::store($ilmoitusId);
 });
 
-$routes->post('/kayttaja/muokkaa/:id', function ($id) {
+$routes->post('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
     KayttajaController::update($id);
 });
 
@@ -89,14 +93,14 @@ $routes->post('/login', function () {
     KayttajaController::handle_login();
 });
 
-$routes->post('/delete/ilmoitus/:id', function ($id) {
+$routes->post('/delete/ilmoitus/:id', 'check_logged_in', function ($id) {
     IlmoitusController::destroy($id);
 });
 
-$routes->post('/delete/kayttaja/:id', function ($id) {
+$routes->post('/delete/kayttaja/:id', 'check_logged_in', function ($id) {
     KayttajaController::destroy($id);
 });
 
-$routes->post('/delete/huuto/:id', function ($id) {
+$routes->post('/delete/huuto/:id', 'check_logged_in', function ($id) {
     HuutoController::destroy($id);
 });
