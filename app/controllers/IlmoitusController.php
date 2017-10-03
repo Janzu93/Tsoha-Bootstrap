@@ -51,13 +51,14 @@ class IlmoitusController extends BaseController
             'kayttaja_id' => $_SESSION['kayttaja']
         );
 
+
         $ilmoitus = new Ilmoitus($attributes);
         $errors = $ilmoitus->errors();
 
         if (count($errors) == 0) {
             $ilmoitus->save();
 
-            Redirect::to('/listaus', array('message' => 'Tuote asetettu myytäväksi!'));
+            Redirect::to('/ilmoitus/' . $ilmoitus->id, array('message' => 'Tuote asetettu myytäväksi!'));
         } else {
             Redirect::to('/new/ilmoitus', array('errors' => $errors, 'attributes' => $attributes));
         }
