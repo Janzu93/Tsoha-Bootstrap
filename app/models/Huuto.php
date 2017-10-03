@@ -142,11 +142,10 @@ VALUES (:ilmoitus_id, :kayttaja_id, :hinta, :paiva) RETURNING id');
             'hinta' => $this->hinta,
             'paiva' => $this->paiva));
 
-        $query = DB::connection()->prepare('UPDATE Ilmoitus hintanyt = :hinta WHERE id = :ilmoitus_id');
-        $query->execute(array('ilmoitus_id' => $this->ilmoitus_id, 'hinta' => $this->hinta));
+        $query = DB::connection()->prepare('UPDATE Ilmoitus SET hintanyt = :hinta WHERE id = :ilmoitus_id');
+        $query->execute(array('hinta' => $this->hinta, 'ilmoitus_id' => $this->ilmoitus_id));
 
         $row = $query->fetch();
-        $this->id = $row['id'];
     }
 
     public function validate_hinta()
