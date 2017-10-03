@@ -37,3 +37,9 @@ INSERT INTO Ryhma_Kayttaja(ryhma_id, kayttaja_id)
 
 INSERT INTO Ryhma_Kayttaja
  VALUES (1, 3);
+
+INSERT INTO Ryhma_Kayttaja
+ VALUES (3, 3);
+
+INSERT INTO Ryhma_Kayttaja
+ VALUES (2, 3);

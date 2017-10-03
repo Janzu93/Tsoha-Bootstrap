@@ -123,7 +123,16 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite)
 
         $query = DB::connection()->prepare('DELETE FROM Huuto WHERE kayttaja_id = :id');
         $query->execute(array($id));
+
+        $lista = Ilmoitus::findWithKayttajaId($id);
+
+        foreach ($lista as $ilmoitus) {
+            $query = DB::connection()->prepare('DELETE FROM Huuto WHERE Ilmoitus_id = :id');
+            $query->execute(array($ilmoitus->id));
+        }
         $query = DB::connection()->prepare('DELETE FROM Ilmoitus WHERE kayttaja_id = :id');
+        $query->execute(array($id));
+        $query = DB::connection()->prepare('DELETE FROM Ryhma_Kayttaja WHERE kayttaja_id = :id');
         $query->execute(array($id));
         $query = DB::connection()->prepare('DELETE FROM Kayttaja WHERE id = :id');
         $query->execute(array($id));

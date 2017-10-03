@@ -50,7 +50,7 @@ $routes->get('/admin/listaus', 'check_logged_in', function () {
 });
 
 $routes->get('/admin/kayttajat', 'check_logged_in', function () {
-    KayttajaController::index();
+    AdminController::kayttajaList();
 });
 
 $routes->get('/new/ilmoitus/', 'check_logged_in', function () {

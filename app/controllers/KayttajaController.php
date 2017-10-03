@@ -8,12 +8,6 @@
 
 class KayttajaController extends BaseController
 {
-    public static function index()
-    {
-        $kayttajat = Kayttaja::all();
-
-        View::make('kayttaja/list.html', array('kayttajat' => $kayttajat));
-    }
 
 
     public static function page($id)

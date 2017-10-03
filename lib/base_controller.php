@@ -24,5 +24,4 @@ class BaseController
             Redirect::to('/login', array('errors' => array('Et ole kirjautunut sisään')));
         }
     }
-
 }
