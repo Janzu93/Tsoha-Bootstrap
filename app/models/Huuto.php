@@ -47,11 +47,24 @@ class Huuto extends BaseModel
         return $row['count'];
     }
 
+    public static function ilmoitusHuutoMax($ilmoitusId)
+    {
+
+        if (Huuto::countIlmoituksenHuudot($ilmoitusId) == 0) {
+            return Ilmoitus::find($ilmoitusId)->lahtohinta;
+        }
+        $query = DB::connection()->prepare('SELECT * FROM Huuto WHERE ilmoitus_id = :ilmoitus_id ORDER BY hinta DESC LIMIT 1');
+        $query->execute(array($ilmoitusId));
+
+        $row = $query->fetch();
+
+        return $row['hinta'];
+    }
+
     public static function findWithKayttajaId($kayttajaId)
     {
         $query = DB::connection()->prepare('SELECT Huuto.*, Ilmoitus.id, Ilmoitus.nimi FROM Huuto LEFT JOIN Ilmoitus ON (Huuto.ilmoitus_id = Ilmoitus.id) WHERE Huuto.kayttaja_id = :kayttajaId');
         $query->execute(array($kayttajaId));
-
         $rows = $query->fetchAll();
         $huudot = array();
 
@@ -129,6 +142,9 @@ VALUES (:ilmoitus_id, :kayttaja_id, :hinta, :paiva) RETURNING id');
             'hinta' => $this->hinta,
             'paiva' => $this->paiva));
 
+        $query = DB::connection()->prepare('UPDATE Ilmoitus hintanyt = :hinta WHERE id = :ilmoitus_id');
+        $query->execute(array('ilmoitus_id' => $this->ilmoitus_id, 'hinta' => $this->hinta));
+
         $row = $query->fetch();
         $this->id = $row['id'];
     }
@@ -137,6 +153,10 @@ VALUES (:ilmoitus_id, :kayttaja_id, :hinta, :paiva) RETURNING id');
     {
         $errors = array();
 
+
+        if ($this->hinta <= self::ilmoitusHuutoMax($this->ilmoitus_id)) {
+            $errors[] = 'Tarjoamasi hinnan tulee olla suurempi kuin lähtöhinta/korkein huuto';
+        }
         if ($this->hinta <= 0 || $this->hinta == null) {
             $errors[] = 'Määritithän huutosi hinnan?';
         }
