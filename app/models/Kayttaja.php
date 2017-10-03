@@ -110,8 +110,7 @@ VALUES (:etunimi, :sukunimi, :kayttajatunnus, :salasana, :syntymapaiva, :osoite)
                 'kayttajatunnus' => $row['kayttajatunnus'],
                 'salasana' => $row['salasana'],
                 'syntymapaiva' => $row['syntymapaiva'],
-                'osoite' => $row['osoite'],
-                'oikeudet' => $row['oikeudet']));
+                'osoite' => $row['osoite']));
 
             return $kayttaja;
         } else {
