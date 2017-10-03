@@ -30,4 +30,15 @@ class AdminController extends BaseController
             View::make('/home.html', array('errors' => array('Sinulla ei ole oikeuksia tälle sivulle!')));
         }
     }
+
+    public static function admin()
+    {
+        if (!$_SESSION['kayttaja'] == null &&
+            (in_array(2, RyhmaKayttaja::kayttajanRyhmat($_SESSION['kayttaja'])[0]->ryhma_id) ||
+                in_array(3, RyhmaKayttaja::kayttajanRyhmat($_SESSION['kayttaja'])[0]->ryhma_id))) {
+            View::make('admin.html');
+        } else {
+            View::make('/home.html', array('errors' => array('Sinulla ei ole oikeuksia tälle sivulle!')));
+        }
+    }
 }

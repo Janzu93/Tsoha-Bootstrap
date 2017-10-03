@@ -13,7 +13,7 @@ $routes->get('/kayttaja/:id', 'check_logged_in', function ($id) {
 });
 
 $routes->get('/admin', 'check_logged_in', function () {
-    AuctionatorController::admin();
+    AdminController::admin();
 });
 
 $routes->get('/listaus', function () {

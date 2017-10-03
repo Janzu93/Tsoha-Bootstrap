@@ -8,10 +8,6 @@ class AuctionatorController extends BaseController
         View::make('home.html');
     }
 
-    public static function admin()
-    {
-        View::make('admin.html');
-    }
 
     // todo Poista lopuksi
     public static function sandbox()
