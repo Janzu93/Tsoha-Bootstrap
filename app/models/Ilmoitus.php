@@ -72,8 +72,9 @@ LEFT JOIN (SELECT COUNT(Huuto.id), Huuto.ilmoitus_id FROM Huuto GROUP BY(Huuto.i
 
     public static function find($id)
     {
-        $query = DB::connection()->prepare('SELECT Ilmoitus.*, Kayttaja.kayttajatunnus FROM Ilmoitus 
-LEFT JOIN Kayttaja ON (Ilmoitus.kayttaja_id = Kayttaja.id) WHERE ilmoitus.id = :id LIMIT 1');
+        $query = DB::connection()->prepare('SELECT Ilmoitus.*, huuto.count, Kayttaja.kayttajatunnus FROM Ilmoitus 
+LEFT JOIN Kayttaja ON (Ilmoitus.kayttaja_id = Kayttaja.id) 
+LEFT JOIN (SELECT COUNT(Huuto.id), Huuto.ilmoitus_id FROM Huuto GROUP BY(Huuto.ilmoitus_id)) AS huuto ON (Ilmoitus.id = huuto.ilmoitus_id) WHERE ilmoitus.id = :id LIMIT 1');
 
         $query->execute(array('id' => $id));
         $row = $query->fetch();
@@ -88,7 +89,8 @@ LEFT JOIN Kayttaja ON (Ilmoitus.kayttaja_id = Kayttaja.id) WHERE ilmoitus.id = :
                 'hintanyt' => $row['hintanyt'],
                 'kuvaus' => $row['kuvaus'],
                 'kayttaja_id' => $row['kayttaja_id'],
-                'kayttajatunnus' => $row['kayttajatunnus']
+                'kayttajatunnus' => $row['kayttajatunnus'],
+                'huutomaara' => $row['count']
             ));
         }
         return $ilmoitus;

@@ -39,7 +39,7 @@ class Huuto extends BaseModel
 
     public static function countIlmoituksenHuudot($ilmoitusId)
     {
-        $query = DB::connection()->prepare('SELECT COUNT(Huuto.id) FROM Huuto LEFT JOIN Ilmoitus ON (ilmoitus_id = Ilmoitus.id) WHERE Ilmoitus.id = :ilmoitusId');
+        $query = DB::connection()->prepare('SELECT COUNT(Huuto.id) FROM Huuto WHERE Ilmoitus_id = :ilmoitusId');
         $query->execute(array($ilmoitusId));
 
         $row = $query->fetch();
