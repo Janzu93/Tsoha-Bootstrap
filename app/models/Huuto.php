@@ -87,7 +87,6 @@ class Huuto extends BaseModel
         return $huuto;
     }
 
-    // todo Korjaa tämä niin että tulee loputkin huudot
     public static function findWithIlmoitusId($ilmoitusId)
     {
         $query = DB::connection()->prepare('SELECT Huuto.*, Kayttaja.kayttajatunnus 
@@ -108,9 +107,8 @@ LEFT JOIN Ilmoitus ON (Ilmoitus.id = Huuto.ilmoitus_id) WHERE ilmoitus_id = :ilm
                 'paiva' => $row['paiva'],
                 'kayttajatunnus' => $row['kayttajatunnus']
             ));
-
-            return $huudot;
         }
+        return $huudot;
     }
 
     public function destroy($id)
