@@ -16,7 +16,7 @@ class IlmoitusController extends BaseController
         $kayttaja = $_SESSION['kayttaja'];
 
         foreach ($ilmoitukset as $ilmoitus) {
-            $ilmoitusPaattynyt[] = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
+            array_push($ilmoitusTilat, Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva));
         }
 
         View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset, 'paattynyt' => $ilmoitusTilat, 'kayttaja' => $kayttaja));

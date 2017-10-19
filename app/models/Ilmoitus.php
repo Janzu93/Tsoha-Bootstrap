@@ -132,7 +132,6 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
     public function validate_paattymispaiva()
     {
         $date = $this->paattymispaiva;
-        $paivaero = date_diff(date_create(date('Y-m-d')), date_create($date))->format('%r%d');
         $errors = array();
 
         if ($date == null || $date == '') {
@@ -146,11 +145,11 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
             $errors[] = 'Virhe päättymispäivässä!';
         }
 
-        if ($paivaero < 0) {
+        if (date_create(date('Y-m-d')) > date_create_from_format('Y-m-d', $date)) {
             $errors[] = 'Päättymispäivä ei voi olla menneisyydessä!';
-        } else if ($paivaero == 0) {
+        } else if (date_create(date('Y-m-d')) == date_create_from_format('Y-m-d', $date)) {
             $errors[] = 'Päättymispäivä ei voi olla tänään!';
-        } else if ($paivaero > 7) {
+        } else if (strtotime($date) > strtotime('+1 week')) {
             $errors[] = 'Ilmoitus voi olla voimassa korkeintaan viikon!';
         }
 
@@ -195,10 +194,8 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
     public static function check_paattynyt($paiva)
     {
 
-        $paivaero = date_diff(date_create(date('Y-m-d')), date_create($paiva))->format('%r%d');
 
-
-        if ($paivaero < 0) {
+        if (date_create(date('Y-m-d')) < date_create_from_format('Y-m-d', $paiva)) {
             return false;
         }
         return true;
