@@ -82,6 +82,7 @@ class Huuto extends BaseModel
 
     }
 
+
     public static function find($id)
     {
         $query = DB::connection()->prepare('SELECT * FROM Huuto WHERE id = :id LIMIT 1');

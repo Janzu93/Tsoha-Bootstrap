@@ -19,7 +19,6 @@
     </tr>
     </thead>
 
-    <!-- todo Huutojen tilan tarkistus-->
     <tbody>
     {% for ilmoitus in ilmoitukset %}
     <tr>
@@ -27,7 +26,11 @@
         <td><a href="{{base_path}}/kayttaja/{{ilmoitus.kayttaja_id}}">{{ilmoitus.kayttajatunnus}}</a></td>
         <td>{{ilmoitus.alkamispaiva}}</td>
         <td>{{ilmoitus.paattymispaiva}}</td>
-        <td><label class="label label-success">W.I.P</label></td>
+        {% if not paattynyt[ilmoitus.id] %}
+        <td><label class="label label-success">Huudettavissa</label></td>
+        {% else %}
+        <td><label class="label label-danger">Päättynyt</label></td>
+        {% endif %}
         <td>{{ilmoitus.hintanyt}} €</td>
         <td>{{ilmoitus.huutomaara}}</td>
     </tr>

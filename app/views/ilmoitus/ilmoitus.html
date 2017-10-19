@@ -8,14 +8,17 @@
 </form>
 <a href="{{base_path}}/ilmoitus/muokkaa/{{ilmoitus.id}}" class="btn btn-default">Muokkaa</a>
 </p>
-<!-- todo kaupan tila -->
 <ul>
     <li><strong>Myyjä: </strong>{{ilmoitus.kayttajatunnus}}</li>
     <li><strong>Kaupan alkamispäivä: </strong>{{ilmoitus.alkamispaiva}}</li>
     <li><strong>Kaupan päättymisaika: </strong>{{ilmoitus.paattymispaiva}}</li>
-    <li><strong>Tila: </strong><label class="label label-success">W.I.P</label></li>
+    {% if not paattynyt %}
+    <li><strong>Tila: </strong><label class="label label-success">Huudettavissa</label></li>
+    {% else %}
+    <li><strong>Tila: </strong><label class="label label-danger">Päättynyt</label></li>
+    {% endif %}
     <li><strong>Hinta nyt: </strong>{{ilmoitus.hintanyt}}</li>
-    <li><strong>Huutojen määrä: </strong>{{huutocount}}</li>
+    <li><strong>Huutojen määrä: </strong>{{ilmoitus.huutomaara}}</li>
 </ul>
 <p>
     {{ilmoitus.kuvaus}}
@@ -43,6 +46,7 @@
 </table>
 
 <br/>
+{% if not paattynyt %}
 <button class="btn-success" onClick="huutoKentta()">Huuda Tuotetta</button>
 <script language="javascript">
     function huutoKentta() {
@@ -58,13 +62,19 @@
 <div id="huutoKentta" style="display: none">
     <h2>Huuda tuotetta</h2>
     <form method="post" action="{{base_path}}/new/huuto/{{ilmoitus.id}}">
-        <div class="form-group"><label>Käyttäjänimi: /Käyttäjän nimi tähän/</label></div>
+        <div class="form-group"><label>Käyttäjänimi: {{kayttaja.kayttajatunnus}}</label></div>
         <div class="form-group"><label>Hinta (€):</label>
-            <input type="number" name="hinta" step="0.01" value="0.00" class="form-control">
+            <input id="hinta" type="number" name="hinta" step="0.01" value="0.00" class="form-control">
+            <script language="JavaScript">
+                // @formatter:off
+                document.getElementById("hinta").value = {{ilmoitus.hintanyt}} + 0.01;
+                // @formatter:on
+            </script>
         </div>
         <div class="form-group">
             <button type="submit" class="form-control">Huuda!</button>
         </div>
     </form>
 </div>
+{% endif %}
 {% endblock %}

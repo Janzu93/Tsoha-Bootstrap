@@ -29,8 +29,8 @@ $routes->get('/hiekkalaatikko', function () {
     AuctionatorController::sandbox();
 });
 
-$routes->get('/muokkaa/kayttaja', 'check_logged_in', function () {
-    AuctionatorController::kayttajaMuokkaus();
+$routes->get('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
+    KayttajaController::edit($id);
 });
 
 $routes->get('/ilmoitus/muokkaa/:id', 'check_logged_in', function ($id) {
@@ -45,11 +45,11 @@ $routes->get('/kayttaja/new', function () {
     KayttajaController::create();
 });
 
-$routes->get('/admin/listaus', 'check_logged_in', function () {
+$routes->get('/admin/listaus', function () {
     AdminController::ilmoitusList();
 });
 
-$routes->get('/admin/kayttajat', 'check_logged_in', function () {
+$routes->get('/admin/kayttajat', function () {
     AdminController::kayttajaList();
 });
 
@@ -83,10 +83,6 @@ $routes->post('/new/kayttaja/', function () {
 
 $routes->post('/new/huuto/:ilmoitusId', 'check_logged_in', function ($ilmoitusId) {
     HuutoController::store($ilmoitusId);
-});
-
-$routes->post('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
-    KayttajaController::update($id);
 });
 
 $routes->post('/login', function () {

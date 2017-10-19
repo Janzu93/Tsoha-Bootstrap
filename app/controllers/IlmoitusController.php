@@ -12,8 +12,14 @@ class IlmoitusController extends BaseController
     public static function index()
     {
         $ilmoitukset = Ilmoitus::all();
+        $ilmoitusTilat = array();
+        $kayttaja = $_SESSION['kayttaja'];
 
-        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset));
+        foreach ($ilmoitukset as $ilmoitus) {
+            $ilmoitusPaattynyt[] = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
+        }
+
+        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset, 'paattynyt' => $ilmoitusTilat, 'kayttaja' => $kayttaja));
     }
 
     public static function ilmoitus($id)
@@ -21,8 +27,9 @@ class IlmoitusController extends BaseController
         $ilmoitus = Ilmoitus::find($id);
         $huudot = Huuto::findWithIlmoitusId($id);
         $huutoCount = Huuto::countIlmoituksenHuudot($id);
+        $paattynyt = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
 
-        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus, 'huudot' => $huudot, 'huutocount' => $huutoCount));
+        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus, 'huudot' => $huudot, 'huutocount' => $huutoCount, 'paattynyt' => $paattynyt));
     }
 
     public static function edit($id)

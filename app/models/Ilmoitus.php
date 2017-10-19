@@ -192,6 +192,19 @@ VALUES (:nimi, :alkamispaiva, :paattymispaiva, :lahtohinta, :hintanyt, :kuvaus, 
         return $errors;
     }
 
+    public static function check_paattynyt($paiva)
+    {
+
+        $paivaero = date_diff(date_create(date('Y-m-d')), date_create($paiva))->format('%r%d');
+
+
+        if ($paivaero < 0) {
+            return false;
+        }
+        return true;
+
+    }
+
     public function update($id)
     {
         $query = DB::connection()->prepare('UPDATE Ilmoitus SET nimi = :nimi,
