@@ -30,10 +30,12 @@ $routes->get('/hiekkalaatikko', function () {
 });
 
 $routes->get('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
+    BaseController::check_oikeudet($id);
     KayttajaController::edit($id);
 });
 
 $routes->get('/ilmoitus/muokkaa/:id', 'check_logged_in', function ($id) {
+    BaseController::check_oikeudet($id);
     IlmoitusController::edit($id);
 });
 
@@ -62,6 +64,7 @@ $routes->get('/new/kayttaja/', function () {
 });
 
 $routes->get('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
+    BaseController::check_oikeudet($id);
     KayttajaController::edit($id);
 });
 
@@ -70,6 +73,7 @@ $routes->post('/new/ilmoitus/', 'check_logged_in', function () {
 });
 
 $routes->post('/ilmoitus/muokkaa/:id', 'check_logged_in', function ($id) {
+    BaseController::check_oikeudet($id);
     IlmoitusController::update($id);
 });
 

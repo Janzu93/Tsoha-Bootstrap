@@ -24,4 +24,16 @@ class BaseController
             Redirect::to('/login', array('errors' => array('Et ole kirjautunut sisään')));
         }
     }
+
+    public static function check_oikeudet($id)
+    {
+        self::check_logged_in();
+        $kayttaja = self::get_user_logged_in();
+
+        if ($kayttaja->id != $id &&
+            !in_array(3, RyhmaKayttaja::kayttajanRyhmat($_SESSION['kayttaja'])[0]->ryhma_id) &&
+            !in_array(2, RyhmaKayttaja::kayttajanRyhmat($_SESSION['kayttaja'])[0]->ryhma_id)) {
+            Redirect::to('/', array('errors' => array('Sinulla ei ole oikeuksia pyytämääsi sisältöön')));
+        }
+    }
 }
