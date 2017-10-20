@@ -38,13 +38,14 @@
         <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
                 <!-- Navigaation linkit -->
-                <!-- todo Näytä vain tarpeelliset linkit käyttäjän login statuksesta riippuen-->
                 <li><a href="{{base_path}}">Etusivu</a></li>
+                {% if session['kayttaja'] == null %}
                 <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
                 <li><a href="{{base_path}}/new/kayttaja">Rekisteröidy</a></li>
+                {% else %}
                 <form id="logout" method="post" action="{{base_path}}/logout" style="display:none"></form>
                 <li><a onClick="$('#logout').submit()" style="cursor:pointer">Kirjaudu ulos</a></li>
-                <!-- todo näytä vain adminille -->
+                {% endif %}
                 <li><a href="{{base_path}}/admin">Hallintapaneeli</a></li>
             </ul>
         </div>

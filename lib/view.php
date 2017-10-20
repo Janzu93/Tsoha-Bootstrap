@@ -5,6 +5,7 @@
     public static function make($view, $content = array()){
       // Alustetaan Twig
       $twig = self::get_twig();
+        $twig->addGlobal('session', $_SESSION);
 
       try{
         // Asetetaan uudelleenohjauksen yhteydessä lisätty viesti
