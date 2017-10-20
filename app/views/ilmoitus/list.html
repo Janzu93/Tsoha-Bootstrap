@@ -26,7 +26,7 @@
         <td><a href="{{base_path}}/kayttaja/{{ilmoitus.kayttaja_id}}">{{ilmoitus.kayttajatunnus}}</a></td>
         <td>{{ilmoitus.alkamispaiva}}</td>
         <td>{{ilmoitus.paattymispaiva}}</td>
-        {% if paattynyt[ilmoitus.id-1] %}
+        {% if paattynyt[ilmoitus.id] == true %}
         <td><label class="label label-danger">Päättynyt</label></td>
         {% else %}
         <td><label class="label label-success">Huudettavissa</label></td>

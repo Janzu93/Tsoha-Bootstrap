@@ -11,10 +11,15 @@ class AdminController extends BaseController
     public static function ilmoitusList()
     {
         $ilmoitukset = Ilmoitus::all();
+        $ilmoitusTilat = array();
+
+        foreach ($ilmoitukset as $ilmoitus) {
+            $ilmoitusTilat[$ilmoitus->id] = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
+        }
 
 
         if (!$_SESSION['kayttaja'] == null && in_array(3, RyhmaKayttaja::kayttajanRyhmat($_SESSION['kayttaja'])[0]->ryhma_id)) {
-            View::make('admin/ilmoitus_list.html', array('ilmoitukset' => $ilmoitukset));
+            View::make('admin/ilmoitus_list.html', array('ilmoitukset' => $ilmoitukset, 'paattynyt' => $ilmoitusTilat));
         } else {
             View::make('/home.html', array('errors' => array('Sinulla ei ole oikeuksia tälle sivulle!')));
         }

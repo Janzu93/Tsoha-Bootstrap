@@ -22,10 +22,10 @@
         <td>{{ilmoitus.kayttajatunnus}}</td>
         <td>{{ilmoitus.alkamispaiva}}</td>
         <td>{{ilmoitus.paattymispaiva}}</td>
-        {% if not ilmoitusPaattynyt[ilmoitus.id] %}
-        <td><label class="label label-success">Huudettavissa</label></td>
-        {% else %}
+        {% if paattynyt[ilmoitus.id] %}
         <td><label class="label label-danger">Päättynyt</label></td>
+        {% else %}
+        <td><label class="label label-success">Huudettavissa</label></td>
         {% endif %}
         <td>{{ilmoitus.hintanyt}} €</td>
         <td>{{ilmoitus.huutomaara}}</td>

@@ -13,13 +13,14 @@ class IlmoitusController extends BaseController
     {
         $ilmoitukset = Ilmoitus::all();
         $ilmoitusTilat = array();
-        $kayttaja = $_SESSION['kayttaja'];
-
-        foreach ($ilmoitukset as $ilmoitus) {
-            array_push($ilmoitusTilat, Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva));
+        if ($_SESSION != null) {
+            $kayttaja = $_SESSION['kayttaja'];
         }
 
-        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset, 'paattynyt' => $ilmoitusTilat, 'kayttaja' => $kayttaja));
+        foreach ($ilmoitukset as $ilmoitus) {
+            $ilmoitusTilat[$ilmoitus->id] = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
+        }
+        View::make('ilmoitus/list.html', array('ilmoitukset' => $ilmoitukset, 'paattynyt' => $ilmoitusTilat));
     }
 
     public static function ilmoitus($id)
