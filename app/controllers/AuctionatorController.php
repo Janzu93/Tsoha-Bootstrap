@@ -7,8 +7,4 @@ class AuctionatorController extends BaseController
     {
         View::make('home.html');
     }
-
-
-
-
 }
