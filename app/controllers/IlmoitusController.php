@@ -30,7 +30,7 @@ class IlmoitusController extends BaseController
         $huutoCount = Huuto::countIlmoituksenHuudot($id);
         $paattynyt = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
 
-        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus, 'huudot' => $huudot, 'huutocount' => $huutoCount, 'paattynyt' => $paattynyt));
+        View::make('ilmoitus/ilmoitus.html', array('ilmoitus' => $ilmoitus, 'huudot' => $huudot, 'huutoCount' => $huutoCount, 'paattynyt' => $paattynyt));
     }
 
     public static function edit($id)
