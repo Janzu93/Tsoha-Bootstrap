@@ -24,11 +24,6 @@ $routes->get('/ilmoitus/:id', 'check_logged_in', function ($id) {
     IlmoitusController::ilmoitus($id);
 });
 
-// todo Poista lopuksi
-$routes->get('/hiekkalaatikko', function () {
-    AuctionatorController::sandbox();
-});
-
 $routes->get('/kayttaja/muokkaa/:id', 'check_logged_in', function ($id) {
     BaseController::check_oikeudet($id);
     KayttajaController::edit($id);

@@ -9,11 +9,6 @@ class AuctionatorController extends BaseController
     }
 
 
-    // todo Poista lopuksi
-    public static function sandbox()
-    {
-        // Testaa koodiasi täällä
 
-    }
 
 }
