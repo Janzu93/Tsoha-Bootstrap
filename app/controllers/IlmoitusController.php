@@ -13,9 +13,6 @@ class IlmoitusController extends BaseController
     {
         $ilmoitukset = Ilmoitus::all();
         $ilmoitusTilat = array();
-        if ($_SESSION != null) {
-            $kayttaja = $_SESSION['kayttaja'];
-        }
 
         foreach ($ilmoitukset as $ilmoitus) {
             $ilmoitusTilat[$ilmoitus->id] = Ilmoitus::check_paattynyt($ilmoitus->paattymispaiva);
